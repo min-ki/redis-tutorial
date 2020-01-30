@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 * Redis Basics
     * [Home](./ch01.md)
-    * [Overview]()
+    * [Overview](./ch02.md)
     * [Environment]()
     * [Configuration]()
     * [Data types]()
