@@ -5,7 +5,7 @@
     * [Home](./ch01.md)
     * [Overview](./ch02.md)
     * [Environment](./ch03.md)
-    * [Configuration]()
+    * [Configuration](./ch04.md)
     * [Data types]()
 * Redis Commands
     * [Commands]()
