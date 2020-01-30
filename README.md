@@ -10,3 +10,5 @@
 * Advanced
 
 이 3개의 파트의 각 장을 통해서 Redis를 공부해봅시다.
+
+이 문서는 [여기](https://gurumee92.github.io/redis-tutorial/)를 통해서 확인할 수 있습니다. 
