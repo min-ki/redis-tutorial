@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Environment · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -58,6 +58,8 @@
 
     
     
+    <link rel="prev" href="ch02.html" />
+    
 
     </head>
     <body>
@@ -85,7 +87,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -138,7 +140,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.3" data-path="ch03.html">
+        <li class="chapter active" data-level="1.2.3" data-path="ch03.html">
             
                 <a href="ch03.html">
             
@@ -581,7 +583,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Environment</a>
     </h1>
 </div>
 
@@ -596,17 +598,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#xB808;&#xB514;&#xC2A4;-&#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;">&#xB808;&#xB514;&#xC2A4; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;</h1>
+                                <h1 id="environment">Environment</h1>
 <blockquote>
-<p><a href="https://www.tutorialspoint.com/" target="_blank">https://www.tutorialspoint.com/</a>&#xC5D0;&#xC11C; &#xC81C;&#xACF5;&#xD558;&#xB294; &#xB808;&#xB514;&#xC2A4; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC; &#xBC88;&#xC5ED; &#xBB38;&#xC11C;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC6D0;&#xB798; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC740; &#xC6B0;&#xBD84;&#xD22C; &#xD658;&#xACBD;&#xC5D0;&#xC11C; &#xB808;&#xB514;&#xC2A4;&#xB97C; &#xC9C1;&#xC811; &#xC124;&#xCE58;&#xD558;&#xC5EC; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;. &#xADF8;&#xB7EC;&#xB098;, &#xC774; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC5D0;&#xC11C;&#xB294; &quot;&#xB3C4;&#xCEE4;&quot;&#xB97C; &#xC774;&#xC6A9;&#xD558;&#xC5EC; &#xC9C4;&#xD589;&#xD569;&#xB2C8;&#xB2E4;. &#xB530;&#xB77C;&#xC11C;, &#xC5EC;&#xB7EC;&#xBD84;&#xB4E4;&#xC758; &#xBA38;&#xC2E0;&#xC5D0; &#xB3C4;&#xCEE4;&#xAC00; &#xC124;&#xCE58;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&#xACE0; &#xAC00;&#xC815;&#xD569;&#xB2C8;&#xB2E4;. &#xC124;&#xCE58;&#xB418;&#xC5B4; &#xC788;&#xC9C0; &#xC54A;&#xB2E4;&#xBA74; <a href="docker.com/get-started">&#xB2E4;&#xC74C;</a>&#xC744; &#xCC38;&#xACE0;&#xD558;&#xC138;&#xC694;.</p>
 </blockquote>
-<p>&#xC774; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC740; &#xD06C;&#xAC8C; 3&#xAC00;&#xC9C0;&#xB85C; &#xB098;&#xB258;&#xC5B4;&#xC838; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<ul>
-<li>Basics</li>
-<li>Commands</li>
-<li>Advanced</li>
-</ul>
-<p>&#xC774; 3&#xAC1C;&#xC758; &#xD30C;&#xD2B8;&#xC758; &#xAC01; &#xC7A5;&#xC744; &#xD1B5;&#xD574;&#xC11C; Redis&#xB97C; &#xACF5;&#xBD80;&#xD574;&#xBD05;&#xC2DC;&#xB2E4;.</p>
+<h2 id="install-redis-with-docker">Install Redis with Docker</h2>
+<p>&#xBA3C;&#xC800; &#xB3C4;&#xCEE4;&#xC5D0; Redis&#xB97C; &#xC124;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;. &#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#xB3C4;&#xCEE4;&#xC5D0; &#xB808;&#xB514;&#xC2A4; &#xCEE8;&#xD14C;&#xC774;&#xB108; &#xC124;&#xCE58;</span>
+$ docker pull redis
+
+<span class="hljs-comment"># &#xC124;&#xCE58; &#xD655;&#xC778;</span>
+$ docker images | grep <span class="hljs-string">&quot;redis&quot;</span>
+redis               latest              9b188f5fb1e6        3 weeks ago         98.2MB
+</code></pre>
+<h2 id="start-redis">Start Redis</h2>
+<p>&#xC774;&#xC81C; &#xB3C4;&#xCEE4;&#xC5D0;&#xC11C; Redis&#xB97C; &#xC2E4;&#xD589;&#xD569;&#xB2C8;&#xB2E4;. &#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># redis run port=6379, demon execute</span>
+$ docker run --name some-redis <span class="hljs-_">-d</span> -p 6379:6379 redis         
+
+<span class="hljs-comment"># check container</span>
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+6dd5dc757682        redis               <span class="hljs-string">&quot;docker-entrypoint.s&#x2026;&quot;</span>   9 minutes ago       Up 2 seconds        0.0.0.0:6379-&gt;6379/tcp   some-redis
+</code></pre>
+<h2 id="check-if-redis-is-working">Check If Redis is Working</h2>
+<p>&#xC774;&#xC81C; Redis&#xAC00; &#xC2E4;&#xD589;&#xB418;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;. &#xD604;&#xC7AC; &quot;redis-server&quot;&#xAC00; &#xB3C4;&#xCEE4; &#xCEE8;&#xD14C;&#xC774;&#xB108;&#xB85C;&#xC368; &#xC2E4;&#xD589;&#xB418;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xAE30;&#xC874;&#xC5D0; &#xC2E4;&#xD589; &#xCCB4;&#xD06C;&#xB97C; &#xC704;&#xD55C; &quot;redis-cli&quot;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C;&#xB294;, &#xB2E4;&#xC74C; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC785;&#xB825;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># docker run redis-cli</span>
+$ docker run -it --link some-redis:redis --rm redis redis-cli -h redis -p 6379
+redis:6379&gt;
+</code></pre>
+<p>&#xC790; &#xC774;&#xC81C; &#xD130;&#xBBF8;&#xB110;&#xC5D0; ping&#xC744; &#xC785;&#xB825;&#xD574;&#xBD05;&#xC2DC;&#xB2E4;.</p>
+<pre><code class="lang-bash">redis:6379&gt; ping
+PONG
+</code></pre>
+<p>&#xC790; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xAC83;&#xC744; &#xBAA8;&#xB450; &#xD655;&#xC778;&#xD558;&#xC600;&#xC2B5;&#xB2C8;&#xB2E4;. <a href="ch04.md">Configuration</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -634,6 +659,10 @@
 
             
                 
+                <a href="ch02.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Overview">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
                 
             
         
@@ -642,7 +671,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Redis Basics","level":"1.2","depth":1,"ref":"","articles":[{"title":"Home","level":"1.2.1","depth":2,"path":"ch01.md","ref":"./ch01.md","articles":[]},{"title":"Overview","level":"1.2.2","depth":2,"path":"ch02.md","ref":"./ch02.md","articles":[]},{"title":"Environment","level":"1.2.3","depth":2,"path":"ch03.md","ref":"./ch03.md","articles":[]},{"title":"Configuration","level":"1.2.4","depth":2,"ref":"","articles":[]},{"title":"Data types","level":"1.2.5","depth":2,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2020-01-30T04:36:52.080Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-30T06:18:46.932Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Environment","level":"1.2.3","depth":2,"next":{"title":"Configuration","level":"1.2.4","depth":2,"ref":"","articles":[]},"previous":{"title":"Overview","level":"1.2.2","depth":2,"path":"ch02.md","ref":"./ch02.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch03.md","mtime":"2020-01-30T06:18:01.052Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-30T06:18:46.932Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

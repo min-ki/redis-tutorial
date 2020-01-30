@@ -4,7 +4,7 @@
 * Redis Basics
     * [Home](./ch01.md)
     * [Overview](./ch02.md)
-    * [Environment]()
+    * [Environment](./ch03.md)
     * [Configuration]()
     * [Data types]()
 * Redis Commands
