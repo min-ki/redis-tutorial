@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * Redis Basics
-    * [Home]()
+    * [Home](./ch01.md)
     * [Overview]()
     * [Environment]()
     * [Configuration]()
