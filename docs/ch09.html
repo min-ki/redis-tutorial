@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="ch10.html" />
+    
     
     <link rel="prev" href="ch08.html" />
     
@@ -250,14 +252,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" >
+        <li class="chapter " data-level="1.3.5" data-path="ch10.html">
             
-                <span>
+                <a href="ch10.html">
             
                     
                     Lists
             
-                </span>
+                </a>
             
 
             
@@ -698,6 +700,212 @@ redis 127.0.0.1:6379&gt; HGETALL tutorialspoint
 </tr>
 </tbody>
 </table>
+<h2 id="1-hdel">1. HDEL</h2>
+<p>Redis <strong>HDEL</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC;&#xC5D0;&#xC11C; &#xD2B9;&#xC815; &#xD544;&#xB4DC;&#xB97C; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;. &#xC9C0;&#xC815;&#xB41C; &#xD544;&#xB4DC;&#xAC00; &#xD574;&#xC2DC;&#xC5D0; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74; &#xBB34;&#xC2DC;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74; &#xBE44;&#xC5B4;&#xC788;&#xB294; &#xD574;&#xC2DC;&#xB85C; &#xCDE8;&#xAE09;&#xB418;&#xBA70;, 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD574;&#xC2DC;&#xC5D0;&#xC11C; &#xC0AD;&#xC81C;&#xB41C; &#xD544;&#xB4DC;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xD544;&#xB4DC;&#xB294; &#xAC1C;&#xC218;&#xC5D0; &#xD3EC;&#xD568;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HDEL</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HDEL KEY_NAME FIELD1.. FIELDN
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HDEL myhash field1 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HDEL myhash field2 
+(integer) 0
+</code></pre><h2 id="2-hexists">2. HEXISTS</h2>
+<p>Redis <strong>HEXISTS</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC758; &#xC874;&#xC7AC; &#xC5EC;&#xBD80;&#xB97C; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC815;&#xC218;&#xAC12; 1 &#xB610;&#xB294; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xD574;&#xC2DC;&#xAC00; &#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xB97C; &#xD3EC;&#xD568;&#xD558;&#xBA74; 1&#xC744;, &#xD3EC;&#xD568;&#xD558;&#xC9C0; &#xC54A;&#xAC70;&#xB098; &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HEXISTS</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HEXISTS KEY_NAME FIELD_NAME
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HEXISTS myhash field1 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HEXISTS myhash field2 
+(integer) 0
+</code></pre><h2 id="3-hget">3. HGET</h2>
+<p>Redis <strong>HGET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC758; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC9C0;&#xC815;&#xB41C; &#xD544;&#xB4DC;&#xC758; &#xAC12;&#xC744; String&#xC73C;&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xD574;&#xC2DC;&#xC5D0; &#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xAC70;&#xB098;, &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0; Nil&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HGET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HGET KEY_NAME FIELD_NAME
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HGET myhash field1 
+&quot;foo&quot; 
+redis 127.0.0.1:6379&gt; HGET myhash field2 
+(nil)
+</code></pre><h2 id="4-hgetall">4. HGETALL</h2>
+<p>Redis <strong>HGETALL</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC;&#xC758; &#xBAA8;&#xB4E0; &#xD544;&#xB4DC;&#xC640; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;. &#xB9AC;&#xD134;&#xB41C; &#xAC12;&#xC5D0;&#xC11C;, &#xAC01; &#xD544;&#xB4DC; &#xC774;&#xB984; &#xB4A4;&#xC5D0; &#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xC758; &#xAC12;&#xC774; &#xB530;&#xB77C;&#xB098;&#xC635;&#xB2C8;&#xB2E4;. &#xB530;&#xB77C;&#xC11C; &#xBC18;&#xD658;&#xAC12;&#xC758; &#xCD1D; &#xAE38;&#xC774;&#xB294; &#xD574;&#xC2DC; &#xC0AC;&#xC774;&#xC988;&#xC758; &#xB450; &#xBC30;&#xAC00; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD574;&#xC2DC;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD544;&#xB4DC;&#xC640; &#xAC12;&#xC758; &#xBAA9;&#xB85D;&#xC744; Array&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xACBD;&#xC6B0; &#xBE48; &#xB9AC;&#xC2A4;&#xD2B8;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HGETALL</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HGETALL KEY_NAME
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;Hello&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HSET myhash field2 &quot;World&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HGETALL myhash 
+1) &quot;field1&quot; 
+2) &quot;Hello&quot; 
+3) &quot;field2&quot; 
+4) &quot;World&quot;
+</code></pre><h2 id="5-hincrby">5. HINCRBY</h2>
+<p>Redis <strong>HINCRBY</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC22B;&#xC790;&#xB97C; &#xC9C0;&#xC815;&#xD55C; &#xAC12;&#xB9CC;&#xD07C; &#xC99D;&#xAC00;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xD574;&#xC2DC;&#xB97C; &#xAC16;&#xB294; &#xC0C8;&#xB85C;&#xC6B4; &#xD0A4;&#xAC00; &#xC0DD;&#xC131;&#xB429;&#xB2C8;&#xB2E4;. &#xD544;&#xB4DC;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xC5F0;&#xC0B0;&#xC774; &#xC218;&#xD589;&#xB418;&#xAE30; &#xC804;&#xC5D0; &#xAC12;&#xC744; 0&#xC73C;&#xB85C; &#xC138;&#xD305;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xC5D0;&#xC11C; &#xC99D;&#xAC00; &#xC5F0;&#xC0B0;&#xC744; &#xC218;&#xD589;&#xD55C; &#xD6C4;&#xC758; &#xC815;&#xC218;&#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HINCRBY</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;. </p>
+<pre><code>redis 127.0.0.1:6379&gt; HINCRBY KEY_NAME FIELD_NAME INCR_BY_NUMBER
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field 20 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HINCRBY myhash field 1 
+(integer) 21 
+redis 127.0.0.1:6379&gt; HINCRBY myhash field -1 
+(integer) 20
+</code></pre><h2 id="6-hincrbyfloat">6. HINCRBYFLOAT</h2>
+<p>Redis <strong>HINCRBYFLOAT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xAC12;&#xC744; &#xBD80;&#xB3D9; &#xC18C;&#xC218;&#xC810;&#xC73C;&#xB85C; &#xD45C;&#xD604;&#xB418;&#xB294; &#xD2B9;&#xC815; &#xAC12;&#xB9CC;&#xD07C; &#xC99D;&#xAC00;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;. &#xD544;&#xB4DC;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xC5F0;&#xC0B0; &#xC218;&#xD589; &#xC804;&#xC5D0; &#xD544;&#xB4DC; &#xAC12;&#xC744; 0&#xC73C;&#xB85C; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;. &#xD544;&#xB4DC;&#xAC00; &#xC798;&#xBABB;&#xB41C; &#xD0C0;&#xC785;&#xC758; &#xAC12;&#xC744; &#xD3EC;&#xD568;&#xD558;&#xAC70;&#xB098;, &#xC9C0;&#xC815;&#xB41C; &#xC99D;&#xBD84;&#xAC12;&#xC744; &#xBD80;&#xB3D9; &#xC18C;&#xC218;&#xC810; &#xC22B;&#xC790;&#xB85C; &#xB098;&#xD0C0;&#xB0BC; &#xC218; &#xC5C6;&#xB294; &#xACBD;&#xC6B0; &#xC5D0;&#xB7EC;&#xAC00; &#xBC1C;&#xC0DD;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC99D;&#xBD84; &#xC5F0;&#xC0B0; &#xD6C4; &#xD544;&#xB4DC;&#xC758; &#xAC12;&#xC744; String&#xC73C;&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HINCRBYFLOAT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HINCRBYFLOAT KEY_NAME FIELD_NAME INCR_BY_NUMBER
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field 20.50 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HINCRBYFLOAT myhash field 0.1 
+&quot;20.60&quot;
+</code></pre><h2 id="7-hkeys">7. HKEYS</h2>
+<p>Redis <strong>HKEYS</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC;&#xC758; &#xBAA8;&#xB4E0; &#xD544;&#xB4DC; &#xC774;&#xB984;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD574;&#xC2DC; &#xD544;&#xB4DC; &#xBAA9;&#xB85D;&#xC744; Array&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xBE48; &#xB9AC;&#xC2A4;&#xD2B8;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HKEYS</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HKEYS KEY_NAME
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HSET myhash field2 &quot;bar&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HKEYS myhash 
+1) &quot;field1&quot; 
+2) &quot;field2&quot;
+</code></pre><h2 id="8-hlen">8. HLEN</h2>
+<p>Redis <strong>HLEN</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC; &#xD544;&#xB4DC; &#xAC1C;&#xC218;&#xB97C; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD574;&#xC2DC; &#xD544;&#xB4DC; &#xAC1C;&#xC218;(&#xC815;&#xC218;&#xAC12;)&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HLEN</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HLEN KEY_NAME
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HSET myhash field2 &quot;bar&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HLEN myhash 
+(integer) 2
+</code></pre><h2 id="9-hmget">9. HMGET</h2>
+<p>Redis <strong>HMGET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC;&#xC5D0;&#xC11C; &#xD2B9;&#xC815; &#xD544;&#xB4DC;&#xB4E4;&#xC758; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;. &#xD544;&#xB4DC;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; nil &#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC8FC;&#xC5B4;&#xC9C4; &#xD544;&#xB4DC;&#xB4E4;&#xC758; &#xAC12; &#xBAA9;&#xB85D;&#xC744; &#xC694;&#xCCAD; &#xC21C;&#xC11C;&#xB300;&#xB85C; Array&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. </p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; Redis <strong>HMGET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HMGET KEY_NAME FIELD1...FIELDN
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HSET myhash field2 &quot;bar&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HMGET myhash field1 field2 nofield 
+1) &quot;foo&quot; 
+2) &quot;bar&quot; 
+3) (nil)
+</code></pre><h2 id="10-hmset">10. HMSET</h2>
+<p>Redis <strong>HMSET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC;&#xC5D0; &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; &#xD544;&#xB4DC;&#xC5D0; &#xB300;&#xD574; &#xAC12;&#xC744; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xBBF8; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xD544;&#xB4DC;&#xC778; &#xACBD;&#xC6B0; &#xB36E;&#xC5B4;&#xC4F0;&#xAE30;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xACBD;&#xC6B0; &#xD574;&#xC2DC;&#xB97C; &#xAC16;&#xB294; &#xC0C8; &#xD0A4;&#xAC00; &#xC0DD;&#xC131;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&quot;OK&quot; String&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HMSET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HMSET KEY_NAME FIELD1 VALUE1 ...FIELDN VALUEN
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HMSET myhash field1 &quot;foo&quot; field2 &quot;bar&quot; 
+OK 
+redis 127.0.0.1:6379&gt; HGET myhash field1 
+&quot;foo&quot; 
+redis 127.0.0.1:6379&gt; HGET myhash field2 
+&quot;bar&quot;
+</code></pre><h2 id="11-hset">11. HSET</h2>
+<p>Redis <strong>HSET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC5D0; &#xAC12;&#xC744; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xD574;&#xC2DC;&#xB97C; &#xAC16;&#xB294; &#xC0C8; &#xD0A4;&#xAC00; &#xC0DD;&#xC131;&#xB429;&#xB2C8;&#xB2E4;. &#xD574;&#xC2DC;&#xC5D0; &#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xAC00; &#xC774;&#xBBF8; &#xC874;&#xC7AC;&#xD558;&#xBA74; &#xB36E;&#xC5B4;&#xC4F0;&#xAE30;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC815;&#xC218;&#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xC0C8;&#xB85C;&#xC6B4; &#xD544;&#xB4DC;&#xC5D0; &#xAC12;&#xC774; &#xC124;&#xC815;&#xB418;&#xBA74; 1&#xC744;, &#xC774;&#xBBF8; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xD544;&#xB4DC;&#xC5D0; &#xAC12;&#xC774; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xB418;&#xBA74; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HSET</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HSET KEY_NAME FIELD VALUE
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1
+redis 127.0.0.1:6379&gt; HGET myhash field1 
+&quot;foo&quot;
+</code></pre><h2 id="12-hsetnx">12. HSETNX</h2>
+<p>Redis <strong>HSETNX</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xAC00; &#xC544;&#xC9C1; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xACBD;&#xC6B0;&#xC5D0;&#xB9CC; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC5D0; &#xAC12;&#xC744; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xD574;&#xC2DC;&#xB97C; &#xAC16;&#xB294; &#xC0C8;&#xB85C;&#xC6B4; &#xD0A4;&#xB97C; &#xC0DD;&#xC131;&#xD569;&#xB2C8;&#xB2E4;. &#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xAC00; &#xC774;&#xBBF8; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;&#xBA74; &#xC544;&#xBB34; &#xC77C;&#xB3C4; &#xC77C;&#xC5B4;&#xB098;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC815;&#xC218;&#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xC0C8;&#xB85C;&#xC6B4; &#xD544;&#xB4DC;&#xC5D0; &#xAC12;&#xC774; &#xC124;&#xC815;&#xB418;&#xBA74; 1&#xC744;, &#xD544;&#xB4DC;&#xAC00; &#xC774;&#xBBF8; &#xD574;&#xC2DC;&#xC5D0; &#xC874;&#xC7AC;&#xD574; &#xC5F0;&#xC0B0;&#xC774; &#xC218;&#xD589;&#xB418;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HSETNX</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HSETNX KEY_NAME FIELD VALUE
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSETNX myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HSETNX myhash field1 &quot;bar&quot; 
+(integer) 0 
+redis 127.0.0.1:6379&gt; HGET myhash field1 
+&quot;foo&quot;
+</code></pre><h2 id="13-hvals">13. HVALS</h2>
+<p>Redis <strong>HVALS</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC;&#xC758; &#xBAA8;&#xB4E0; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD574;&#xC2DC; &#xAC12; &#xBAA9;&#xB85D;&#xC744; Array&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xBE48; &#xB9AC;&#xC2A4;&#xD2B8;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HVALS</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HVALS KEY_NAME
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; HSET myhash field1 &quot;foo&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HSET myhash field2 &quot;bar&quot; 
+(integer) 1 
+redis 127.0.0.1:6379&gt; HVALS myhash 
+1) &quot;foo&quot; 
+2) &quot;bar&quot;
+</code></pre><h2 id="14-hscan">14. HSCAN</h2>
+<p>Redis <strong>HSCAN</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC640; &#xADF8; &#xAC12;&#xC758; &#xC30D;&#xC744; &#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xC870;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xB450; &#xAC1C;&#xC758; &#xC6D0;&#xC18C;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;. &#xCCAB; &#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xB294; &#xBD80;&#xD638;&#xC5C6;&#xB294; 64&#xBE44;&#xD2B8; &#xC22B;&#xC790;(&#xCEE4;&#xC11C;)&#xB97C; &#xD45C;&#xD604;&#xD558;&#xB294; String, &#xB450; &#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xB294; &#xD544;&#xB4DC;-&#xAC12; &#xC30D;&#xC758; Array&#xC785;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>HSCAN</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; HSCAN KEY_NAME CURSOR [MATCH pattern] [COUNT count]
+</code></pre><h3 id="example">Example</h3>
+<pre><code>127.0.0.1:6379&gt; HMSET langhash lang1 &quot;PHP&quot; lang2 &quot;JavaScript&quot; lang3 &quot;Python&quot; lang4 &quot;GoLanguage&quot;
+OK
+127.0.0.1:6379&gt; HSCAN langhash 0
+1) &quot;0&quot;
+2) 1) &quot;lang1&quot;
+   2) &quot;PHP&quot;
+   3) &quot;lang2&quot;
+   4) &quot;JavaScript&quot;
+   5) &quot;lang3&quot;
+   6) &quot;Python&quot;
+   7) &quot;lang4&quot;
+   8) &quot;GoLanguage&quot;
+</code></pre><p><a href="ch10.html">Lists</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -725,10 +933,14 @@ redis 127.0.0.1:6379&gt; HGETALL tutorialspoint
 
             
                 
-                <a href="ch08.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Strings">
+                <a href="ch08.html" class="navigation navigation-prev " aria-label="Previous page: Strings">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="ch10.html" class="navigation navigation-next " aria-label="Next page: Lists">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -737,7 +949,7 @@ redis 127.0.0.1:6379&gt; HGETALL tutorialspoint
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hashes","level":"1.3.4","depth":2,"next":{"title":"Lists","level":"1.3.5","depth":2,"ref":"","articles":[]},"previous":{"title":"Strings","level":"1.3.3","depth":2,"path":"ch08.md","ref":"./ch08.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch09.md","mtime":"2020-02-03T01:54:14.718Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-03T01:55:08.876Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Hashes","level":"1.3.4","depth":2,"next":{"title":"Lists","level":"1.3.5","depth":2,"path":"ch10.md","ref":"./ch10.md","articles":[]},"previous":{"title":"Strings","level":"1.3.3","depth":2,"path":"ch08.md","ref":"./ch08.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch09.md","mtime":"2020-02-03T06:35:16.759Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-03T06:35:29.942Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
