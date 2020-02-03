@@ -11,7 +11,7 @@
     * [Commands](./ch06.md)
     * [Keys](./ch07.md)
     * [Strings](./ch08.md)
-    * [Hashes]()
+    * [Hashes](./ch09.md)
     * [Lists]()
     * [Sets]()
     * [Sorted Sets]()
