@@ -12,7 +12,7 @@
     * [Keys](./ch07.md)
     * [Strings](./ch08.md)
     * [Hashes](./ch09.md)
-    * [Lists]()
+    * [Lists](./ch10.md)
     * [Sets]()
     * [Sorted Sets]()
     * [HyperLogLog]()
