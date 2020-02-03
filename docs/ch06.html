@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Configuration · GitBook</title>
+        <title>Commands · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ch05.html" />
+    <link rel="next" href="ch07.html" />
     
-    
-    <link rel="prev" href="ch03.html" />
     
 
     </head>
@@ -155,7 +153,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="ch04.html">
+        <li class="chapter " data-level="1.2.4" data-path="ch04.html">
             
                 <a href="ch04.html">
             
@@ -200,7 +198,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="ch06.html">
+        <li class="chapter active" data-level="1.3.1" data-path="ch06.html">
             
                 <a href="ch06.html">
             
@@ -585,7 +583,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Configuration</a>
+        <a href="." >Commands</a>
     </h1>
 </div>
 
@@ -600,45 +598,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="configuration">Configuration</h1>
-<p>Redis&#xAC00; &#xC124;&#xCE58;&#xB418;&#xBA74;, Redis &#xB8E8;&#xD2B8; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xC5D0;, &quot;redis.conf&quot;&#xB77C;&#xB294; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xD30C;&#xC77C;&#xB85C;, Redis&#xB97C; &#xC124;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C;, &#xC124;&#xC815; &#xD30C;&#xC77C; &#xC678; CONIFG &#xBA85;&#xB839;&#xC5B4;&#xB85C; Redis&#xB97C; &#xC9C1;&#xC811; &#xC124;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. </p>
-<h2 id="get-configuration">Get Configuration</h2>
+                                <h1 id="commands">Commands</h1>
+<p>Redis &#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xC5B4;&#xB5A4; &#xC791;&#xC5C5;&#xC744; &#xC218;&#xD589;&#xD560; &#xB54C; Redis &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>Redis &#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C;&#xB294; Redis &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xAC00; &#xD544;&#xC694;&#xD569;&#xB2C8;&#xB2E4;. &#xC55E;&#xC11C; &#xC124;&#xCE58;&#xD55C; Redis &#xD328;&#xD0A4;&#xC9C0;&#xC5D0;&#xC11C; Redis &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB97C; &#xC81C;&#xACF5;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>CONIFG &#xBA85;&#xB839;&#xC5B4;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC740; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>$ redis:6379 &gt; CONFIG GET &lt;&#xC124;&#xC815; &#xC774;&#xB984;&gt;
+<p>&#xB2E4;&#xC74C;&#xC740; Redis &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>$ redis-cli
 </code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;. </p>
-<pre><code class="lang-bash">$ redis:6379 &gt; CONFIG GET loglevel
-1) <span class="hljs-string">&quot;loglevel&quot;</span>
-2) <span class="hljs-string">&quot;notice&quot;</span>
-</code></pre>
-<p>&#xBAA8;&#xB4E0; &#xC124;&#xC815;&#xC744; &#xBCF4;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &quot;*&quot;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. &#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash">$ redis:6379 &gt; CONFIG GET *
-1) <span class="hljs-string">&quot;dbfilename&quot;</span>
-2) <span class="hljs-string">&quot;dump.rdb&quot;</span>
-3) <span class="hljs-string">&quot;requirepass&quot;</span>
-4) <span class="hljs-string">&quot;&quot;</span>
-5) <span class="hljs-string">&quot;masterauth&quot;</span>
-6) <span class="hljs-string">&quot;&quot;</span>
-7) <span class="hljs-string">&quot;cluster-announce-ip&quot;</span>
-8) <span class="hljs-string">&quot;&quot;</span>
-9) <span class="hljs-string">&quot;unixsocket&quot;</span>
-10) <span class="hljs-string">&quot;&quot;</span>
-....
-</code></pre>
-<h2 id="edit-configuration">Edit Configuration</h2>
-<p>&#xC124;&#xC815;&#xC744; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xD558;&#xB824;&#xBA74;, redis.confg&#xB97C; &#xC9C1;&#xC811;&#xC801;&#xC73C;&#xB85C; &#xC218;&#xC815;&#xD558;&#xAC70;&#xB098;, &quot;CONFIG SET&quot; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC785;&#xB825;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; Redis &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB97C; &#xC2DC;&#xC791;&#xD558;&#xB294; &#xC608;&#xC81C;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC744; &#xC5F4;&#xACE0; <em>redis-cli</em> &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC785;&#xB825;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xC81C; &#xB85C;&#xCEEC; &#xC11C;&#xBC84;&#xC5D0; &#xC5F0;&#xACB0;&#xB418;&#xC5B4; &#xBAA8;&#xB4E0; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>$redis-cli 
+redis 127.0.0.1:6379&gt; 
+redis 127.0.0.1:6379&gt; PING  
+PONG
+</code></pre><p>&#xC704;&#xC758; &#xC608;&#xC2DC;&#xC5D0;&#xC11C;&#xB294; &#xB85C;&#xCEEC;&#xC5D0;&#xC11C; &#xC2E4;&#xD589; &#xC911;&#xC778; Redis &#xC11C;&#xBC84;&#xC5D0; &#xC811;&#xC18D;&#xD574; <em>PING</em> &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD588;&#xC2B5;&#xB2C8;&#xB2E4;. <em>PING</em> &#xC740; &#xC11C;&#xBC84;&#xAC00; &#xC2E4;&#xD589; &#xC911;&#xC778;&#xC9C0;&#xB97C; &#xCCB4;&#xD06C;&#xD558;&#xB294; &#xCEE4;&#xB9E8;&#xB4DC;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<h2 id="run-commands-on-the-remote-server">Run Commands on the Remote Server</h2>
+<p>Redis &#xC6D0;&#xACA9; &#xC11C;&#xBC84;&#xC5D0;&#xC11C; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD560; &#xB54C; &#xC5ED;&#xC2DC;, &#xB3D9;&#xC77C;&#xD55C; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; <em>redis-cli</em> &#xB85C; &#xC11C;&#xBC84;&#xC5D0; &#xC811;&#xC18D;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>CONFIG SET&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xC870;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>$ redis:6379 &gt; CONFIG SET &lt;&#xC124;&#xC815; &#xC774;&#xB984;&gt; &lt;&#xC124;&#xC815; &#xAC12;&gt;
+<pre><code>$ redis-cli -h host -p port -a password
 </code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># loglevel notice &#xC124;&#xC815;</span>
-$ redis:6379 &gt; CONFIG SET loglevel notice
-1) <span class="hljs-string">&quot;loglevel&quot;</span>
-2) <span class="hljs-string">&quot;notice&quot;</span>
-</code></pre>
-<p><a href="ch05.html">Data Types</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; Redis &#xC6D0;&#xACA9; &#xC11C;&#xBC84;&#xC5D0; &#xC5F0;&#xACB0;&#xD558;&#xB294; &#xC608;&#xC81C;&#xC785;&#xB2C8;&#xB2E4;. &#xC774; &#xC11C;&#xBC84;&#xB294; &#xD638;&#xC2A4;&#xD2B8; 127.0.0.1, &#xD3EC;&#xD2B8; &#xBC88;&#xD638; 6379&#xB85C; &#xC2E4;&#xD589;&#xB418;&#xBA70; &quot;mypass&quot;&#xB77C;&#xB294; &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xB97C; &#xAC16;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>$redis-cli -h 127.0.0.1 -p 6379 -a &quot;mypass&quot; 
+redis 127.0.0.1:6379&gt; 
+redis 127.0.0.1:6379&gt; PING  
+PONG
+</code></pre><p><a href="ch07.html">Keys</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -666,12 +650,8 @@ $ redis:6379 &gt; CONFIG SET loglevel notice
 
             
                 
-                <a href="ch03.html" class="navigation navigation-prev " aria-label="Previous page: Environment">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="ch05.html" class="navigation navigation-next " aria-label="Next page: Data types">
+                <a href="ch07.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Keys">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -682,7 +662,7 @@ $ redis:6379 &gt; CONFIG SET loglevel notice
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.2.4","depth":2,"next":{"title":"Data types","level":"1.2.5","depth":2,"path":"ch05.md","ref":"./ch05.md","articles":[]},"previous":{"title":"Environment","level":"1.2.3","depth":2,"path":"ch03.md","ref":"./ch03.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch04.md","mtime":"2020-01-30T06:41:04.782Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-03T01:55:08.876Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Commands","level":"1.3.1","depth":2,"next":{"title":"Keys","level":"1.3.2","depth":2,"path":"ch07.md","ref":"./ch07.md","articles":[]},"previous":{"title":"Redis Commands","level":"1.3","depth":1,"ref":"","articles":[{"title":"Commands","level":"1.3.1","depth":2,"path":"ch06.md","ref":"./ch06.md","articles":[]},{"title":"Keys","level":"1.3.2","depth":2,"path":"ch07.md","ref":"./ch07.md","articles":[]},{"title":"Strings","level":"1.3.3","depth":2,"path":"ch08.md","ref":"./ch08.md","articles":[]},{"title":"Hashes","level":"1.3.4","depth":2,"path":"ch09.md","ref":"./ch09.md","articles":[]},{"title":"Lists","level":"1.3.5","depth":2,"ref":"","articles":[]},{"title":"Sets","level":"1.3.6","depth":2,"ref":"","articles":[]},{"title":"Sorted Sets","level":"1.3.7","depth":2,"ref":"","articles":[]},{"title":"HyperLogLog","level":"1.3.8","depth":2,"ref":"","articles":[]},{"title":"Publish Subscribe","level":"1.3.9","depth":2,"ref":"","articles":[]},{"title":"Transactins","level":"1.3.10","depth":2,"ref":"","articles":[]},{"title":"Scripting","level":"1.3.11","depth":2,"ref":"","articles":[]},{"title":"Connections","level":"1.3.12","depth":2,"ref":"","articles":[]},{"title":"Server","level":"1.3.13","depth":2,"ref":"","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch06.md","mtime":"2020-01-31T00:41:13.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-03T01:55:08.876Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

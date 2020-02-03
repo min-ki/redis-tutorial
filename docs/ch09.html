@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Configuration · GitBook</title>
+        <title>Hashes · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ch05.html" />
     
-    
-    <link rel="prev" href="ch03.html" />
+    <link rel="prev" href="ch08.html" />
     
 
     </head>
@@ -155,7 +153,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="ch04.html">
+        <li class="chapter " data-level="1.2.4" data-path="ch04.html">
             
                 <a href="ch04.html">
             
@@ -239,7 +237,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="ch09.html">
+        <li class="chapter active" data-level="1.3.4" data-path="ch09.html">
             
                 <a href="ch09.html">
             
@@ -585,7 +583,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Configuration</a>
+        <a href="." >Hashes</a>
     </h1>
 </div>
 
@@ -600,45 +598,106 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="configuration">Configuration</h1>
-<p>Redis&#xAC00; &#xC124;&#xCE58;&#xB418;&#xBA74;, Redis &#xB8E8;&#xD2B8; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xC5D0;, &quot;redis.conf&quot;&#xB77C;&#xB294; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xD30C;&#xC77C;&#xB85C;, Redis&#xB97C; &#xC124;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C;, &#xC124;&#xC815; &#xD30C;&#xC77C; &#xC678; CONIFG &#xBA85;&#xB839;&#xC5B4;&#xB85C; Redis&#xB97C; &#xC9C1;&#xC811; &#xC124;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. </p>
-<h2 id="get-configuration">Get Configuration</h2>
-<h3 id="syntax">Syntax</h3>
-<p>CONIFG &#xBA85;&#xB839;&#xC5B4;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC740; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>$ redis:6379 &gt; CONFIG GET &lt;&#xC124;&#xC815; &#xC774;&#xB984;&gt;
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;. </p>
-<pre><code class="lang-bash">$ redis:6379 &gt; CONFIG GET loglevel
-1) <span class="hljs-string">&quot;loglevel&quot;</span>
-2) <span class="hljs-string">&quot;notice&quot;</span>
-</code></pre>
-<p>&#xBAA8;&#xB4E0; &#xC124;&#xC815;&#xC744; &#xBCF4;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &quot;*&quot;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. &#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash">$ redis:6379 &gt; CONFIG GET *
-1) <span class="hljs-string">&quot;dbfilename&quot;</span>
-2) <span class="hljs-string">&quot;dump.rdb&quot;</span>
-3) <span class="hljs-string">&quot;requirepass&quot;</span>
-4) <span class="hljs-string">&quot;&quot;</span>
-5) <span class="hljs-string">&quot;masterauth&quot;</span>
-6) <span class="hljs-string">&quot;&quot;</span>
-7) <span class="hljs-string">&quot;cluster-announce-ip&quot;</span>
-8) <span class="hljs-string">&quot;&quot;</span>
-9) <span class="hljs-string">&quot;unixsocket&quot;</span>
-10) <span class="hljs-string">&quot;&quot;</span>
-....
-</code></pre>
-<h2 id="edit-configuration">Edit Configuration</h2>
-<p>&#xC124;&#xC815;&#xC744; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xD558;&#xB824;&#xBA74;, redis.confg&#xB97C; &#xC9C1;&#xC811;&#xC801;&#xC73C;&#xB85C; &#xC218;&#xC815;&#xD558;&#xAC70;&#xB098;, &quot;CONFIG SET&quot; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC785;&#xB825;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="syntax">Syntax</h3>
-<p>CONFIG SET&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xC870;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>$ redis:6379 &gt; CONFIG SET &lt;&#xC124;&#xC815; &#xC774;&#xB984;&gt; &lt;&#xC124;&#xC815; &#xAC12;&gt;
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># loglevel notice &#xC124;&#xC815;</span>
-$ redis:6379 &gt; CONFIG SET loglevel notice
-1) <span class="hljs-string">&quot;loglevel&quot;</span>
-2) <span class="hljs-string">&quot;notice&quot;</span>
-</code></pre>
-<p><a href="ch05.html">Data Types</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
+                                <h1 id="hashes">Hashes</h1>
+<p>Redis &#xD574;&#xC2DC;&#xB294; &#xBB38;&#xC790;&#xC5F4; &#xD544;&#xB4DC;&#xC640; &#xBB38;&#xC790;&#xC5F4; &#xAC12; &#xAC04;&#xC758; map&#xC73C;&#xB85C;, &#xAC1D;&#xCCB4;&#xB97C; &#xD45C;&#xD604;&#xD558;&#xAE30; &#xC88B;&#xC740; &#xB370;&#xC774;&#xD130; &#xD0C0;&#xC785;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>Redis&#xC5D0;&#xC11C; &#xBAA8;&#xB4E0; &#xD574;&#xC2DC;&#xB294; 40&#xC5B5; &#xAC1C; &#xC774;&#xC0C1;&#xC758; &#xD544;&#xB4DC;-&#xAC12; &#xC30D;&#xC744; &#xC800;&#xC7A5;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h2 id="example">Example</h2>
+<pre><code>redis 127.0.0.1:6379&gt; HMSET tutorialspoint name &quot;redis tutorial&quot; 
+description &quot;redis basic commands for caching&quot; likes 20 visitors 23000 
+OK 
+redis 127.0.0.1:6379&gt; HGETALL tutorialspoint  
+1) &quot;name&quot; 
+2) &quot;redis tutorial&quot; 
+3) &quot;description&quot; 
+4) &quot;redis basic commands for caching&quot; 
+5) &quot;likes&quot; 
+6) &quot;20&quot; 
+7) &quot;visitors&quot; 
+8) &quot;23000&quot;
+</code></pre><p>&#xC704;&#xC758; &#xC608;&#xC81C;&#xC5D0;&#xC11C; Redis &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC758; &#xC0C1;&#xC138; &#xC815;&#xBCF4;(&#xC774;&#xB984;, &#xC124;&#xBA85;, &#xC88B;&#xC544;&#xC694; &#xC218;, &#xBC29;&#xBB38;&#xC790; &#xC218;)&#xB97C; &apos;tutorialpoint&apos;&#xB77C;&#xB294; &#xC774;&#xB984;&#xC758; &#xD574;&#xC2DC;&#xB85C; &#xC800;&#xC7A5;&#xD588;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h2 id="redis-hash-commands">Redis Hash Commands</h2>
+<p>&#xD574;&#xC2DC;&#xC640; &#xAD00;&#xB828;&#xB41C; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xCEE4;&#xB9E8;&#xB4DC; &#xBA87; &#xAC00;&#xC9C0;&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<table>
+<thead>
+<tr>
+<th>Sr.No</th>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HDEL key field1 [field2]</td>
+<td>&#xD55C; &#xAC1C; &#xC774;&#xC0C1;&#xC758; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xB97C; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HEXISTS key field</td>
+<td>&#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xB294;&#xC9C0; &#xD310;&#xB2E8;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>HGET key field</td>
+<td>&#xD574;&#xB2F9; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC758; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>HGETALL key</td>
+<td>&#xD574;&#xB2F9; &#xD0A4;&#xC5D0; &#xC788;&#xB294; &#xD574;&#xC2DC;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xBAA8;&#xB4E0; &#xD544;&#xB4DC;&#xC640; &#xADF8; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>HINCRBY key field increment</td>
+<td>&#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC758; &#xC815;&#xC218;&#xAC12;&#xC744; &#xC8FC;&#xC5B4;&#xC9C4; &#xC218;&#xB9CC;&#xD07C; &#xC99D;&#xAC00;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>HINCRBYFLOAT key field increment</td>
+<td>&#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC758; float &#xAC12;&#xC744; &#xC8FC;&#xC5B4;&#xC9C4; &#xC591;&#xB9CC;&#xD07C; &#xC99D;&#xAC00;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>HKEYS key</td>
+<td>&#xD574;&#xC2DC;&#xC758; &#xBAA8;&#xB4E0; &#xD544;&#xB4DC;&#xB97C; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;. </td>
+</tr>
+<tr>
+<td>8</td>
+<td>HLEN key</td>
+<td>&#xD574;&#xC2DC;&#xC758; &#xD544;&#xB4DC; &#xC218;&#xB97C; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;. </td>
+</tr>
+<tr>
+<td>9</td>
+<td>HMGET key field1 [field2]</td>
+<td>&#xC8FC;&#xC5B4;&#xC9C4; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xB4E4;&#xC758; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>HMSET key field1 [field2]</td>
+<td>&#xC5EC;&#xB7EC; &#xAC1C;&#xC758; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC5D0; &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; &#xAC12;&#xC744; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>HSET key field value</td>
+<td>&#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC5D0; string &#xAC12;&#xC744; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>HSETNX key field value</td>
+<td>&#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0;&#xC5D0;&#xB9CC; &#xD574;&#xC2DC; &#xD544;&#xB4DC;&#xC5D0; string &#xAC12;&#xC744; &#xC124;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>HVALS key</td>
+<td>&#xD574;&#xC2DC;&#xC758; &#xBAA8;&#xB4E0; &#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>HSCAN key cursor [MATCH pattern] [COUNT count]</td>
+<td>&#xD544;&#xB4DC;-&#xAC12; &#xC30D;&#xC744; &#xCC28;&#xB840;&#xB85C; &#xC870;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -666,14 +725,10 @@ $ redis:6379 &gt; CONFIG SET loglevel notice
 
             
                 
-                <a href="ch03.html" class="navigation navigation-prev " aria-label="Previous page: Environment">
+                <a href="ch08.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Strings">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="ch05.html" class="navigation navigation-next " aria-label="Next page: Data types">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -682,7 +737,7 @@ $ redis:6379 &gt; CONFIG SET loglevel notice
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.2.4","depth":2,"next":{"title":"Data types","level":"1.2.5","depth":2,"path":"ch05.md","ref":"./ch05.md","articles":[]},"previous":{"title":"Environment","level":"1.2.3","depth":2,"path":"ch03.md","ref":"./ch03.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch04.md","mtime":"2020-01-30T06:41:04.782Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-03T01:55:08.876Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Hashes","level":"1.3.4","depth":2,"next":{"title":"Lists","level":"1.3.5","depth":2,"ref":"","articles":[]},"previous":{"title":"Strings","level":"1.3.3","depth":2,"path":"ch08.md","ref":"./ch08.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch09.md","mtime":"2020-02-03T01:54:14.718Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-03T01:55:08.876Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
