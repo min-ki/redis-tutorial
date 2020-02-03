@@ -8,9 +8,9 @@
     * [Configuration](./ch04.md)
     * [Data types](./ch05.md)
 * Redis Commands
-    * [Commands]()
-    * [Keys]()
-    * [Strings]()
+    * [Commands](./ch06.md)
+    * [Keys](./ch07.md)
+    * [Strings](./ch08.md)
     * [Hashes]()
     * [Lists]()
     * [Sets]()
