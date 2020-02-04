@@ -15,7 +15,7 @@
     * [Lists](./ch10.md)
     * [Sets](./ch11.md)
     * [Sorted Sets](./ch12.md)
-    * [HyperLogLog]()
+    * [HyperLogLog](./ch13.md)
     * [Publish Subscribe]()
     * [Transactins]()
     * [Scripting]()

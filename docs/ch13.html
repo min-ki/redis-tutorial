@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Configuration · GitBook</title>
+        <title>HyperLogLog · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ch05.html" />
     
-    
-    <link rel="prev" href="ch03.html" />
+    <link rel="prev" href="ch12.html" />
     
 
     </head>
@@ -155,7 +153,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.4" data-path="ch04.html">
+        <li class="chapter " data-level="1.2.4" data-path="ch04.html">
             
                 <a href="ch04.html">
             
@@ -291,7 +289,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.8" data-path="ch13.html">
+        <li class="chapter active" data-level="1.3.8" data-path="ch13.html">
             
                 <a href="ch13.html">
             
@@ -585,7 +583,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Configuration</a>
+        <a href="." >HyperLogLog</a>
     </h1>
 </div>
 
@@ -600,45 +598,93 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="configuration">Configuration</h1>
-<p>Redis&#xAC00; &#xC124;&#xCE58;&#xB418;&#xBA74;, Redis &#xB8E8;&#xD2B8; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xC5D0;, &quot;redis.conf&quot;&#xB77C;&#xB294; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xD30C;&#xC77C;&#xB85C;, Redis&#xB97C; &#xC124;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C;, &#xC124;&#xC815; &#xD30C;&#xC77C; &#xC678; CONIFG &#xBA85;&#xB839;&#xC5B4;&#xB85C; Redis&#xB97C; &#xC9C1;&#xC811; &#xC124;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. </p>
-<h2 id="get-configuration">Get Configuration</h2>
+                                <h1 id="hyperloglog">HyperLogLog</h1>
+<p>Redis HyperLogLog&#xB294; set&#xC5D0;&#xC11C; &#xC801;&#xC740; &#xC591;&#xC758; &#xBA54;&#xBAA8;&#xB9AC;&#xB85C; &#xC911;&#xBCF5;&#xC774; &#xC544;&#xB2CC; &#xC6D0;&#xC18C; &#xAC1C;&#xC218;&#xC758; &#xADFC;&#xC0AC;&#xCE58;&#xB97C; &#xAD6C;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xBB34;&#xC791;&#xC704;&#xD654; &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>HyperLogLog&#xB294; &#xD558;&#xB098;&#xC758; &#xD0A4;&#xB2F9; 12kbyte &#xC218;&#xC900;&#xC758; &#xB9E4;&#xC6B0; &#xC801;&#xC740; &#xC591;&#xC758; &#xBA54;&#xBAA8;&#xB9AC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;&#xC11C;&#xB3C4;, set&#xC758; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0;&#xB97C; &#xD45C;&#xC900;&#xC624;&#xCC28; 0.81%&#xB85C; &#xB9E4;&#xC6B0; &#xD6CC;&#xB96D;&#xD558;&#xAC8C; &#xC608;&#xCE21;&#xD569;&#xB2C8;&#xB2E4;. 2<sup>64</sup>&#xAC1C;&#xB97C; &#xB118;&#xC5B4;&#xC11C;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74;, &#xC81C;&#xD55C;&#xC5C6;&#xC774; &#xC544;&#xC774;&#xD15C; &#xAC1C;&#xC218;&#xB97C; &#xC140; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h2 id="example">Example</h2>
+<p>&#xB2E4;&#xC74C;&#xC740; Redis HyperLogLog&#xAC00; &#xC5B4;&#xB5BB;&#xAC8C; &#xB3D9;&#xC791;&#xD558;&#xB294;&#xC9C0; &#xBCF4;&#xC5EC;&#xC8FC;&#xB294; &#xC608;&#xC81C;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PFADD tutorials &quot;redis&quot;  
+1) (integer) 1  
+redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mongodb&quot;  
+1) (integer) 1  
+redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mysql&quot;  
+1) (integer) 1  
+redis 127.0.0.1:6379&gt; PFCOUNT tutorials  
+(integer) 3
+</code></pre><h2 id="redis-hyperloglog-commands">Redis HyperLogLog Commands</h2>
+<p>HyperLogLog&#xC640; &#xAD00;&#xB828;&#xB41C; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xCEE4;&#xB9E8;&#xB4DC; &#xBA87; &#xAC00;&#xC9C0;&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<table>
+<thead>
+<tr>
+<th>Sr.No</th>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="#1-pfadd">PFADD</a> key element [element ...]</td>
+<td>&#xD2B9;&#xC815; &#xC6D0;&#xC18C;&#xB97C; &#xC9C0;&#xC815;&#xB41C; HyperLogLog&#xC5D0; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#2-pfcount">PFCOUNT</a> key [key ...]</td>
+<td>&#xD574;&#xB2F9; &#xD0A4;&#xC758; HyperLogLog&#xAC00; &#xAD00;&#xCC30;&#xD55C; set&#xC758; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#3-pfmerge">PFMERGE</a> destkey sourcekey [sourcekey ...]</td>
+<td>N&#xAC1C;&#xC758; &#xC11C;&#xB85C; &#xB2E4;&#xB978; HyperLogLog&#xB97C; &#xD558;&#xB098;&#xB85C; &#xBCD1;&#xD569;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-pfadd">1. PFADD</h2>
+<p>Redis PFADD &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; HyperLogLog &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xC5D0; &#xC778;&#xC790;&#xB85C; &#xBC1B;&#xC740; &#xBAA8;&#xB4E0; &#xC6D0;&#xC18C;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC815;&#xC218;&#xAC12; 1 &#xB610;&#xB294; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>CONIFG &#xBA85;&#xB839;&#xC5B4;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC740; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>$ redis:6379 &gt; CONFIG GET &lt;&#xC124;&#xC815; &#xC774;&#xB984;&gt;
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>PFADD</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PFADD KEY_NAME ELEMENTS_TO_BE_ADDED
 </code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;. </p>
-<pre><code class="lang-bash">$ redis:6379 &gt; CONFIG GET loglevel
-1) <span class="hljs-string">&quot;loglevel&quot;</span>
-2) <span class="hljs-string">&quot;notice&quot;</span>
-</code></pre>
-<p>&#xBAA8;&#xB4E0; &#xC124;&#xC815;&#xC744; &#xBCF4;&#xACE0; &#xC2F6;&#xB2E4;&#xBA74;, &quot;*&quot;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;. &#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash">$ redis:6379 &gt; CONFIG GET *
-1) <span class="hljs-string">&quot;dbfilename&quot;</span>
-2) <span class="hljs-string">&quot;dump.rdb&quot;</span>
-3) <span class="hljs-string">&quot;requirepass&quot;</span>
-4) <span class="hljs-string">&quot;&quot;</span>
-5) <span class="hljs-string">&quot;masterauth&quot;</span>
-6) <span class="hljs-string">&quot;&quot;</span>
-7) <span class="hljs-string">&quot;cluster-announce-ip&quot;</span>
-8) <span class="hljs-string">&quot;&quot;</span>
-9) <span class="hljs-string">&quot;unixsocket&quot;</span>
-10) <span class="hljs-string">&quot;&quot;</span>
-....
-</code></pre>
-<h2 id="edit-configuration">Edit Configuration</h2>
-<p>&#xC124;&#xC815;&#xC744; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xD558;&#xB824;&#xBA74;, redis.confg&#xB97C; &#xC9C1;&#xC811;&#xC801;&#xC73C;&#xB85C; &#xC218;&#xC815;&#xD558;&#xAC70;&#xB098;, &quot;CONFIG SET&quot; &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC785;&#xB825;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PFADD mykey a b c d e f g h i j 
+(integer) 1 
+redis 127.0.0.1:6379&gt; PFCOUNT mykey 
+(integer) 10
+</code></pre><h2 id="2-pfcount">2. PFCOUNT</h2>
+<p>Redis <strong>PFCOUNT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; HyperLogLog &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xAC00; &#xACC4;&#xC0B0;&#xD55C; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC911;&#xBCF5;&#xB418;&#xC9C0; &#xC54A;&#xB294; &#xC6D0;&#xC18C;&#xC758; &#xAC1C;&#xC218; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xC815;&#xC218;&#xAC12;&#xC73C;&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p><strong>PFCOUNT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; &#xD0A4;&#xC640; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;, &#xADF8; &#xD0A4;&#xC758; HyperLogLog&#xC758; &#xD569;&#xC9D1;&#xD569; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>CONFIG SET&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xC870;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>$ redis:6379 &gt; CONFIG SET &lt;&#xC124;&#xC815; &#xC774;&#xB984;&gt; &lt;&#xC124;&#xC815; &#xAC12;&gt;
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>PFCOUNT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PFCOUNT KEY1 KEY@... KEYN
 </code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># loglevel notice &#xC124;&#xC815;</span>
-$ redis:6379 &gt; CONFIG SET loglevel notice
-1) <span class="hljs-string">&quot;loglevel&quot;</span>
-2) <span class="hljs-string">&quot;notice&quot;</span>
-</code></pre>
-<p><a href="ch05.html">Data Types</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PFADD mykey a b c d e f g h i j 
+(integer) 1 
+redis 127.0.0.1:6379&gt; PFCOUNT mykey 
+(integer) 10 
+redis 127.0.0.1:6379&gt; PFCOUNT mykey 
+(integer) 10 
+redis 127.0.0.1:6379&gt; PFCOUNT mykey mynewkey 
+(integer) 10
+</code></pre><h2 id="3-pfmerge">3. PFMERGE</h2>
+<p>Redis <strong>PFMERGE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; HyperLogLog&#xC758; &#xD569;&#xC9D1;&#xD569; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0;&#xB97C; &#xC608;&#xCE21;&#xD560; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xD558;&#xB098;&#xB85C; &#xBCD1;&#xD569;&#xD569;&#xB2C8;&#xB2E4;. </p>
+<h3 id="return-value">Return Value</h3>
+<p>&apos;OK&apos; String&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>PFMERGE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PFMERGE KEY1 KEY@... KEYN
+</code></pre><h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; PFADD hll1 foo bar zap a 
+(integer) 1 
+redis 127.0.0.1:6379&gt; PFADD hll2 a b c foo 
+(integer) 1 
+redis 127.0.0.1:6379&gt; PFMERGE hll3 hll1 hll2 
+OK 
+redis 127.0.0.1:6379&gt; PFCOUNT hll3 
+(integer) 6
+</code></pre><p><a href="ch14.md">Publish Subscribe</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -666,14 +712,10 @@ $ redis:6379 &gt; CONFIG SET loglevel notice
 
             
                 
-                <a href="ch03.html" class="navigation navigation-prev " aria-label="Previous page: Environment">
+                <a href="ch12.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Sorted Sets">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="ch05.html" class="navigation navigation-next " aria-label="Next page: Data types">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -682,7 +724,7 @@ $ redis:6379 &gt; CONFIG SET loglevel notice
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Configuration","level":"1.2.4","depth":2,"next":{"title":"Data types","level":"1.2.5","depth":2,"path":"ch05.md","ref":"./ch05.md","articles":[]},"previous":{"title":"Environment","level":"1.2.3","depth":2,"path":"ch03.md","ref":"./ch03.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch04.md","mtime":"2020-01-30T06:41:04.782Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T02:23:20.330Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"HyperLogLog","level":"1.3.8","depth":2,"next":{"title":"Publish Subscribe","level":"1.3.9","depth":2,"ref":"","articles":[]},"previous":{"title":"Sorted Sets","level":"1.3.7","depth":2,"path":"ch12.md","ref":"./ch12.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch13.md","mtime":"2020-02-04T02:21:31.906Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T02:23:20.330Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
