@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Home · GitBook</title>
+        <title>Transactins · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ch02.html" />
     
+    <link rel="prev" href="ch14.html" />
     
 
     </head>
@@ -114,7 +114,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="ch01.html">
+        <li class="chapter " data-level="1.2.1" data-path="ch01.html">
             
                 <a href="ch01.html">
             
@@ -315,7 +315,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.10" data-path="ch15.html">
+        <li class="chapter active" data-level="1.3.10" data-path="ch15.html">
             
                 <a href="ch15.html">
             
@@ -583,7 +583,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Home</a>
+        <a href="." >Transactins</a>
     </h1>
 </div>
 
@@ -598,13 +598,106 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="redis-tutorial">Redis Tutorial</h1>
-<p>Redis&#xB294; &#xC624;&#xD508;&#xC18C;&#xC2A4;&#xC774;&#xBA70;, BSD &#xB77C;&#xC774;&#xC13C;&#xC2A4;&#xB97C; &#xCDE8;&#xD558;&#xACE0; &#xC788;&#xACE0;, &#xC9C4;&#xBCF4;&#xB41C; KVS(key-value store)&#xC785;&#xB2C8;&#xB2E4;. &#xB808;&#xB514;&#xC2A4;&#xC5D0;&#xC11C; &#xD0A4;&#xB294; strings, hashes, lists, sets, sorted sets &#xB4F1;&#xC758; &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xB4E4;&#xC744; &#xD3EC;&#xD568; &#xD560; &#xC218; &#xC788;&#xC73C;&#xBBC0;&#xB85C; &#xC885;&#xC885; &quot;Data Structure Server&quot;&#xB77C;&#xACE0;&#xD569;&#xB2C8;&#xB2E4;. &#xB808;&#xB514;&#xC2A4;&#xB294; C&#xB85C; &#xC4F0;&#xC5EC;&#xC838; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC740; &#xD655;&#xC7A5;&#xC131;&#xC774; &#xB6F0;&#xC5B4;&#xB098;&#xACE0; &#xC131;&#xB2A5; &#xC9C0;&#xD5A5;&#xC801;&#xC778; &#xC2DC;&#xC2A4;&#xD15C;&#xC744; &#xB9CC;&#xB4E4;&#xACE0; &#xBC30;&#xD3EC;&#xD558;&#xB294;&#xB370; &#xD544;&#xC694;&#xD55C; &#xB808;&#xB514;&#xC2A4;&#xC758; &#xAC1C;&#xB150;&#xC5D0; &#xB300;&#xD55C; &#xC774;&#xD574;&#xB97C; &#xC81C;&#xACF5;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<h2 id="audience">Audience</h2>
-<p>&#xC774; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC740; &#xB808;&#xB514;&#xC2A4;&#xB97C; &#xAC04;&#xB2E8;&#xD558;&#xACE0; &#xC27D;&#xAC8C; &#xBC30;&#xC6B0;&#xACE0; &#xC2F6;&#xC740; &#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4; &#xC804;&#xBB38;&#xAC00;&#xB97C; &#xC704;&#xD574; &#xC124;&#xACC4;&#xB418;&#xC5B4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774; &#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC744; &#xC644;&#xB8CC;&#xD558;&#xBA74;, &#xB354; &#xB192;&#xC740; &#xC218;&#xC900;&#xC758; &#xC804;&#xBB38; &#xC9C0;&#xC2DD;&#xC744; &#xC5BB;&#xAE30; &#xC704;&#xD55C; &#xC911;&#xAC04; &#xC218;&#xC900;&#xC758; &#xC804;&#xBB38; &#xC9C0;&#xC2DD;&#xC744; &#xC5BB;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>&#xC774;&#xD29C;&#xD1A0;&#xB9AC;&#xC5BC;&#xC744; &#xC9C4;&#xD589;&#xD558;&#xAE30; &#xC704;&#xD574;&#xC11C;&#xB294;, &#xB2F9;&#xC2E0;&#xC740; &#xBC18;&#xB4DC;&#xC2DC; &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xB97C; &#xC798; &#xC54C;&#xACE0; &#xC788;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
-<p><a href="ch02.html">Overview</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
+                                <h1 id="transactions">Transactions</h1>
+<p>Redis &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC740; &#xCEE4;&#xB9E8;&#xB4DC; &#xADF8;&#xB8F9;&#xC744; &#xD55C; &#xBB36;&#xC74C;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xD569;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC74C;&#xC740; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC758; &#xB450; &#xAC00;&#xC9C0; &#xD2B9;&#xC9D5;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<ul>
+<li>&#xD558;&#xB098;&#xC758; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC5D0; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xB3C5;&#xB9BD;&#xC801;&#xC778; &#xC5F0;&#xC0B0;&#xC73C;&#xB85C;&#xC11C; &#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;. &#xD2B8;&#xB79C;&#xC7AD;&#xC158; &#xC2E4;&#xD589; &#xB3C4;&#xC911;, &#xB2E4;&#xB978; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB85C;&#xBD80;&#xD130;&#xC758; &#xC694;&#xCCAD;&#xC744; &#xCC98;&#xB9AC;&#xD558;&#xB294; &#xAC83;&#xC740; &#xBD88;&#xAC00;&#xB2A5;&#xD569;&#xB2C8;&#xB2E4;. </li>
+<li>&#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC740; &#xC6D0;&#xC790;&#xC131;&#xC744; &#xAC16;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC6D0;&#xC790;&#xC131;&#xC774;&#xB780;, &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC758; &#xBAA8;&#xB4E0; &#xCEE4;&#xB9E8;&#xB4DC;&#xAC00; &#xC804;&#xBD80; &#xCC98;&#xB9AC;&#xB418;&#xAC70;&#xB098; &#xC544;&#xBB34;&#xAC83;&#xB3C4; &#xCC98;&#xB9AC;&#xB418;&#xC9C0; &#xC54A;&#xC544;&#xC57C; &#xD55C;&#xB2E4;&#xB294; &#xAC83;&#xC744; &#xB9D0;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<h2 id="sample">Sample</h2>
+<p>Redis &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC740; <strong>MULTI</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xD1B5;&#xD574; &#xCD08;&#xAE30;&#xD654;&#xB429;&#xB2C8;&#xB2E4;. &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xD560; &#xCEE4;&#xB9E8;&#xB4DC; &#xBAA9;&#xB85D;&#xC744; &#xC804;&#xB2EC;&#xD558;&#xACE0; <strong>EXEC</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xBA74; &#xC804;&#xCCB4; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC774; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; MULTI 
+OK 
+List of commands here 
+redis 127.0.0.1:6379&gt; EXEC
+</code></pre><h2 id="example">Example</h2>
+<p>&#xB2E4;&#xC74C;&#xC740; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC758; &#xCD08;&#xAE30;&#xD654; &#xBC0F; &#xC2E4;&#xD589; &#xC608;&#xC81C;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; MULTI 
+OK 
+redis 127.0.0.1:6379&gt; SET tutorial redis 
+QUEUED 
+redis 127.0.0.1:6379&gt; GET tutorial 
+QUEUED 
+redis 127.0.0.1:6379&gt; INCR visitors 
+QUEUED 
+redis 127.0.0.1:6379&gt; EXEC  
+1) OK 
+2) &quot;redis&quot; 
+3) (integer) 1
+</code></pre><h2 id="redis-transaction-commands">Redis Transaction Commands</h2>
+<p>&#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xACFC; &#xAD00;&#xB828;&#xB41C; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<table>
+<thead>
+<tr>
+<th>Sr.No</th>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="#1-discard">DISCARD</a></td>
+<td>MULTI &#xC774;&#xD6C4; &#xB4F1;&#xB85D;&#xD55C; &#xBAA8;&#xB4E0; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC0AD;&#xC81C;&#xD558;&#xACE0; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC744; &#xC885;&#xB8CC;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="#2-exec">EXEC</a></td>
+<td>MULTI &#xC774;&#xD6C4; &#xB4F1;&#xB85D;&#xD55C; &#xBAA8;&#xB4E0; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD569;&#xB2C8;&#xB2E4;. </td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="#3-multi">MULTI</a></td>
+<td>&#xD2B8;&#xB79C;&#xC7AD;&#xC158; &#xBE14;&#xB85D;&#xC744; &#xC2DC;&#xC791;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#4-unwatch">UNWATCH</a></td>
+<td>&#xAC10;&#xC2DC;&#xD558;&#xACE0; &#xC788;&#xB358; &#xBAA8;&#xB4E0; &#xD0A4;&#xB97C; &#xAC10;&#xC2DC; &#xD574;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="#5-watch">WATCH</a> key [key ...]</td>
+<td>MULTI~EXEC &#xBE14;&#xB85D;&#xC744; &#xC2E4;&#xD589;&#xD560; &#xAC83;&#xC778;&#xC9C0; &#xD310;&#xB2E8;&#xD558;&#xAE30; &#xC704;&#xD574;, &#xC8FC;&#xC5B4;&#xC9C4; &#xD0A4;&#xB4E4;&#xC744; &#xAC10;&#xC2DC;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-discard">1. DISCARD</h2>
+<p>Redis <strong>DISCARD</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD2B8;&#xB79C;&#xC7AD;&#xC158; &#xD050;&#xB97C; &#xBE44;&#xC6B0;&#xACE0; &#xC0DD;&#xC131;&#xD558;&#xACE0; &#xC788;&#xB358; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC744; &#xC885;&#xB8CC;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&apos;OK&apos; String&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>DISCARD</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; DISCARD
+</code></pre><h2 id="2-exec">2. EXEC</h2>
+<p>Redis <strong>EXEC</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD2B8;&#xB79C;&#xC7AD;&#xC158; &#xD050;&#xC758; &#xBAA8;&#xB4E0; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC2E4;&#xD589;&#xD558;&#xACE0; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC744; &#xC885;&#xB8CC;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xB41C; &#xBAA8;&#xB4E0; &#xCEE4;&#xB9E8;&#xB4DC;&#xC5D0; &#xB300;&#xD55C; &#xC751;&#xB2F5;&#xC744; &#xC6D0;&#xC18C;&#xB85C; &#xD558;&#xB294; Array&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>EXEC</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; EXEC
+</code></pre><h2 id="3-multi">3. MULTI</h2>
+<p>Redis <strong>MULTI</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD2B8;&#xB79C;&#xC7AD;&#xC158; &#xBE14;&#xB85D;&#xC758; &#xC2DC;&#xC791;&#xC744; &#xB098;&#xD0C0;&#xB0C5;&#xB2C8;&#xB2E4;. &#xB4A4;&#xB530;&#xB974;&#xB294; &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD2B8;&#xB79C;&#xC7AD;&#xC158; &#xD050;&#xC5D0; &#xC800;&#xC7A5;&#xB418;&#xACE0; <strong>EXEC</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC5D0; &#xC758;&#xD574; &#xD55C; &#xBB36;&#xC74C;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC5B8;&#xC81C;&#xB098; &apos;OK&apos; String&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>MULTI</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; MULTI
+</code></pre><h2 id="4-unwatch">4. UNWATCH</h2>
+<p>Redis <strong>UNWATCH</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xAC10;&#xC2DC; &#xC911;&#xC774;&#xB358; &#xBAA8;&#xB4E0; &#xD0A4;&#xC5D0; &#xB300;&#xD574; &#xAC10;&#xC2DC;&#xB97C; &#xD574;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC5B8;&#xC81C;&#xB098; &apos;OK&apos; String&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>UNWATCH</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; UNWATCH
+</code></pre><h2 id="5-watch">5. WATCH</h2>
+<p>Redis <strong>WATCH</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD2B8;&#xB79C;&#xC7AD;&#xC158;&#xC758; &#xC870;&#xAC74;&#xBD80; &#xC2E4;&#xD589;&#xC744; &#xC704;&#xD574; &#xC8FC;&#xC5B4;&#xC9C4; &#xD0A4;&#xB97C; &#xAC10;&#xC2DC;&#xD558;&#xAC8C; &#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC5B8;&#xC81C;&#xB098; &apos;OK&apos; String&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>WATCH</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; WATCH key [key ...]
+</code></pre><p><a href="ch16.md">Scripting</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -632,10 +725,10 @@
 
             
                 
-                
-                <a href="ch02.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Overview">
-                    <i class="fa fa-angle-right"></i>
+                <a href="ch14.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Publish Subscribe">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -644,7 +737,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Home","level":"1.2.1","depth":2,"next":{"title":"Overview","level":"1.2.2","depth":2,"path":"ch02.md","ref":"./ch02.md","articles":[]},"previous":{"title":"Redis Basics","level":"1.2","depth":1,"ref":"","articles":[{"title":"Home","level":"1.2.1","depth":2,"path":"ch01.md","ref":"./ch01.md","articles":[]},{"title":"Overview","level":"1.2.2","depth":2,"path":"ch02.md","ref":"./ch02.md","articles":[]},{"title":"Environment","level":"1.2.3","depth":2,"path":"ch03.md","ref":"./ch03.md","articles":[]},{"title":"Configuration","level":"1.2.4","depth":2,"path":"ch04.md","ref":"./ch04.md","articles":[]},{"title":"Data types","level":"1.2.5","depth":2,"path":"ch05.md","ref":"./ch05.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch01.md","mtime":"2020-02-06T00:30:30.684Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-06T00:30:41.432Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Transactins","level":"1.3.10","depth":2,"next":{"title":"Scripting","level":"1.3.11","depth":2,"ref":"","articles":[]},"previous":{"title":"Publish Subscribe","level":"1.3.9","depth":2,"path":"ch14.md","ref":"./ch14.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch15.md","mtime":"2020-02-06T00:28:46.388Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-06T00:30:41.432Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

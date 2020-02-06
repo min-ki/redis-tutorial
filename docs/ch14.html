@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>HyperLogLog · GitBook</title>
+        <title>Publish Subscribe · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ch14.html" />
+    <link rel="next" href="ch15.html" />
     
     
-    <link rel="prev" href="ch12.html" />
+    <link rel="prev" href="ch13.html" />
     
 
     </head>
@@ -291,7 +291,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.8" data-path="ch13.html">
+        <li class="chapter " data-level="1.3.8" data-path="ch13.html">
             
                 <a href="ch13.html">
             
@@ -304,7 +304,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" data-path="ch14.html">
+        <li class="chapter active" data-level="1.3.9" data-path="ch14.html">
             
                 <a href="ch14.html">
             
@@ -585,7 +585,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >HyperLogLog</a>
+        <a href="." >Publish Subscribe</a>
     </h1>
 </div>
 
@@ -600,21 +600,29 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="hyperloglog">HyperLogLog</h1>
-<p>Redis HyperLogLog&#xB294; set&#xC5D0;&#xC11C; &#xC801;&#xC740; &#xC591;&#xC758; &#xBA54;&#xBAA8;&#xB9AC;&#xB85C; &#xC911;&#xBCF5;&#xC774; &#xC544;&#xB2CC; &#xC6D0;&#xC18C; &#xAC1C;&#xC218;&#xC758; &#xADFC;&#xC0AC;&#xCE58;&#xB97C; &#xAD6C;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xBB34;&#xC791;&#xC704;&#xD654; &#xC54C;&#xACE0;&#xB9AC;&#xC998;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<p>HyperLogLog&#xB294; &#xD558;&#xB098;&#xC758; &#xD0A4;&#xB2F9; 12kbyte &#xC218;&#xC900;&#xC758; &#xB9E4;&#xC6B0; &#xC801;&#xC740; &#xC591;&#xC758; &#xBA54;&#xBAA8;&#xB9AC;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;&#xC11C;&#xB3C4;, set&#xC758; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0;&#xB97C; &#xD45C;&#xC900;&#xC624;&#xCC28; 0.81%&#xB85C; &#xB9E4;&#xC6B0; &#xD6CC;&#xB96D;&#xD558;&#xAC8C; &#xC608;&#xCE21;&#xD569;&#xB2C8;&#xB2E4;. 2<sup>64</sup>&#xAC1C;&#xB97C; &#xB118;&#xC5B4;&#xC11C;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74;, &#xC81C;&#xD55C;&#xC5C6;&#xC774; &#xC544;&#xC774;&#xD15C; &#xAC1C;&#xC218;&#xB97C; &#xC140; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+                                <h1 id="publish-subscribe">Publish Subscribe</h1>
+<p>Redis Pub/Sub&#xC740; &#xBC1C;&#xC2E0;&#xC790;(Redis &#xC6A9;&#xC5B4;&#xB85C;&#xB294; &#xBC1C;&#xD589;&#xC790;-publishers)&#xAC00; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xBCF4;&#xB0B4;&#xACE0; &#xC218;&#xC2E0;&#xC790;(&#xAD6C;&#xB3C5;&#xC790;-subscribers)&#xAC00; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xBC1B;&#xB294; &#xBA54;&#xC138;&#xC9C0; &#xC2DC;&#xC2A4;&#xD15C;&#xC744; &#xAD6C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;. &#xBA54;&#xC138;&#xC9C0;&#xAC00; &#xC804;&#xC1A1;&#xB418;&#xB294; &#xB9C1;&#xD06C;&#xB97C; <strong>channel</strong> &#xC774;&#xB77C;&#xACE0; &#xD569;&#xB2C8;&#xB2E4;. </p>
+<p>Redis&#xC5D0;&#xC11C; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xC5EC;&#xB7EC; &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <h2 id="example">Example</h2>
-<p>&#xB2E4;&#xC74C;&#xC740; Redis HyperLogLog&#xAC00; &#xC5B4;&#xB5BB;&#xAC8C; &#xB3D9;&#xC791;&#xD558;&#xB294;&#xC9C0; &#xBCF4;&#xC5EC;&#xC8FC;&#xB294; &#xC608;&#xC81C;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis 127.0.0.1:6379&gt; PFADD tutorials &quot;redis&quot;  
-1) (integer) 1  
-redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mongodb&quot;  
-1) (integer) 1  
-redis 127.0.0.1:6379&gt; PFADD tutorials &quot;mysql&quot;  
-1) (integer) 1  
-redis 127.0.0.1:6379&gt; PFCOUNT tutorials  
-(integer) 3
-</code></pre><h2 id="redis-hyperloglog-commands">Redis HyperLogLog Commands</h2>
-<p>HyperLogLog&#xC640; &#xAD00;&#xB828;&#xB41C; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xCEE4;&#xB9E8;&#xB4DC; &#xBA87; &#xAC00;&#xC9C0;&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; &#xBC1C;&#xD589;-&#xAD6C;&#xB3C5; &#xAC1C;&#xB150;&#xC744; &#xBCF4;&#xC5EC;&#xC8FC;&#xB294; &#xC608;&#xC81C;&#xC785;&#xB2C8;&#xB2E4;. &#xD55C; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xAC00; &apos;redisChat&apos;&#xC774;&#xB77C;&#xB294; &#xC774;&#xB984;&#xC758; &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; SUBSCRIBE redisChat  
+Reading messages... (press Ctrl-C to quit) 
+1) &quot;subscribe&quot; 
+2) &quot;redisChat&quot; 
+3) (integer) 1
+</code></pre><p>&#xC774;&#xBC88;&#xC5D0;&#xB294; &apos;redisChat&apos; &#xCC44;&#xB110;&#xC5D0; &#xB450; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xAC00; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xBC1C;&#xD589;&#xD569;&#xB2C8;&#xB2E4;. &#xC704;&#xC5D0;&#xC11C; &#xAD6C;&#xB3C5;&#xD55C; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xC774; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xC218;&#xC2E0;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PUBLISH redisChat &quot;Redis is a great caching technique&quot;  
+(integer) 1  
+redis 127.0.0.1:6379&gt; PUBLISH redisChat &quot;Learn redis by tutorials point&quot;  
+(integer) 1   
+1) &quot;message&quot; 
+2) &quot;redisChat&quot; 
+3) &quot;Redis is a great caching technique&quot; 
+1) &quot;message&quot; 
+2) &quot;redisChat&quot; 
+3) &quot;Learn redis by tutorials point&quot;
+</code></pre><h2 id="redis-pubsub-commands">Redis PubSub Commands</h2>
+<p>Pub/Sub&#xACFC; &#xAD00;&#xB828;&#xB41C; &#xBA87; &#xAC00;&#xC9C0; &#xAE30;&#xBCF8;&#xC801;&#xC778; &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <table>
 <thead>
 <tr>
@@ -626,67 +634,118 @@ redis 127.0.0.1:6379&gt; PFCOUNT tutorials
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="#1-pfadd">PFADD</a> key element [element ...]</td>
-<td>&#xD2B9;&#xC815; &#xC6D0;&#xC18C;&#xB97C; &#xC9C0;&#xC815;&#xB41C; HyperLogLog&#xC5D0; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td><a href="#1-psubscribe">PSUBSCRIBE</a> pattern [pattern ...]</td>
+<td>&#xC8FC;&#xC5B4;&#xC9C4; &#xD328;&#xD134;&#xACFC; &#xB9E4;&#xCE58;&#xB418;&#xB294; &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>2</td>
-<td><a href="#2-pfcount">PFCOUNT</a> key [key ...]</td>
-<td>&#xD574;&#xB2F9; &#xD0A4;&#xC758; HyperLogLog&#xAC00; &#xAD00;&#xCC30;&#xD55C; set&#xC758; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td><a href="#2-pubsub">PUBSUB</a> subcommand [argument [argument ...]]</td>
+<td>&#xC5B4;&#xB5A4; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB4E4;&#xC774; &#xD65C;&#xC131;&#xD654;&#xB418;&#xC5B4; &#xC788;&#xB294;&#xC9C0; &#xB4F1;&#xC758; Pub/Sub &#xC2DC;&#xC2A4;&#xD15C; &#xC0C1;&#xD0DC;&#xB97C; &#xC54C;&#xB824;&#xC90D;&#xB2C8;&#xB2E4;. </td>
 </tr>
 <tr>
 <td>3</td>
-<td><a href="#3-pfmerge">PFMERGE</a> destkey sourcekey [sourcekey ...]</td>
-<td>N&#xAC1C;&#xC758; &#xC11C;&#xB85C; &#xB2E4;&#xB978; HyperLogLog&#xB97C; &#xD558;&#xB098;&#xB85C; &#xBCD1;&#xD569;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td><a href="#3-publish">PUBLISH</a> channel message</td>
+<td>&#xCC44;&#xB110;&#xC5D0; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xAC8C;&#xC2DC;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="#4-punsubscribe">PUNSUBSCRIBE</a> [pattern [pattern]]</td>
+<td>&#xC8FC;&#xC5B4;&#xC9C4; &#xD328;&#xD134;&#xACFC; &#xB9E4;&#xCE58;&#xB418;&#xB294; &#xCC44;&#xB110;&#xC758; &#xBA54;&#xC138;&#xC9C0; &#xC218;&#xC2E0;&#xC744; &#xC911;&#xC9C0;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="#5-subscribe">SUBSCRIBE</a> channel [channel ...]</td>
+<td>&#xD574;&#xB2F9; &#xCC44;&#xB110;&#xC5D0;&#xC11C; &#xBC1C;&#xD589;&#xB41C; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xC218;&#xC2E0;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="#6-unsubscribe">UNSUBSCRIBE</a> [channel [channel ...]]</td>
+<td>&#xD574;&#xB2F9; &#xCC44;&#xB110;&#xC5D0;&#xC11C; &#xBC1C;&#xD589;&#xB41C; &#xBA54;&#xC138;&#xC9C0; &#xC218;&#xC2E0;&#xC744; &#xC911;&#xC9C0;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="1-pfadd">1. PFADD</h2>
-<p>Redis PFADD &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; HyperLogLog &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xC5D0; &#xC778;&#xC790;&#xB85C; &#xBC1B;&#xC740; &#xBAA8;&#xB4E0; &#xC6D0;&#xC18C;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xC815;&#xC218;&#xAC12; 1 &#xB610;&#xB294; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="1-psubscribe">1. PSUBSCRIBE</h2>
+<p>Redis <strong>PUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; &#xD328;&#xD134;&#xACFC; &#xB9E4;&#xCE58;&#xB418;&#xB294; &#xCC44;&#xB110;&#xB4E4;&#xC744; &#xAD6C;&#xB3C5;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>&#xB2E4;&#xC74C;&#xC740; <strong>PFADD</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis 127.0.0.1:6379&gt; PFADD KEY_NAME ELEMENTS_TO_BE_ADDED
-</code></pre><h3 id="example">Example</h3>
-<pre><code>redis 127.0.0.1:6379&gt; PFADD mykey a b c d e f g h i j 
-(integer) 1 
-redis 127.0.0.1:6379&gt; PFCOUNT mykey 
-(integer) 10
-</code></pre><h2 id="2-pfcount">2. PFCOUNT</h2>
-<p>Redis <strong>PFCOUNT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; HyperLogLog &#xC790;&#xB8CC;&#xAD6C;&#xC870;&#xAC00; &#xACC4;&#xC0B0;&#xD55C; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; 0&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xC911;&#xBCF5;&#xB418;&#xC9C0; &#xC54A;&#xB294; &#xC6D0;&#xC18C;&#xC758; &#xAC1C;&#xC218; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xC815;&#xC218;&#xAC12;&#xC73C;&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<p><strong>PFCOUNT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; &#xD0A4;&#xC640; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;, &#xADF8; &#xD0A4;&#xC758; HyperLogLog&#xC758; &#xD569;&#xC9D1;&#xD569; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0; &#xC608;&#xCE21;&#xAC12;&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>PSUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PSUBSCRIBE CHANNEL_NAME_OR_PATTERN [PATTERN...]
+</code></pre><p>&#xB2E4;&#xC74C;&#xC740; Redis&#xC5D0;&#xC11C; &#xC9C0;&#xC6D0;&#xD558;&#xB294; &#xD328;&#xD134; &#xBAA9;&#xB85D;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<ul>
+<li>h?llo &#xD328;&#xD134;&#xC740; hello, hallo, hxllo &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>h*llo &#xD328;&#xD134;&#xC740; hllo, heeeello &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>h[ae]llo &#xD328;&#xD134;&#xC740; hello, hallo &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5;&#xD558;&#xACE0;, hillo&#xB294; &#xAD6C;&#xB3C5;&#xD558;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;. </li>
+</ul>
+<h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; PSUBSCRIBE mychannel 
+Reading messages... (press Ctrl-C to quit) 
+1) &quot;psubscribe&quot; 
+2) &quot;mychannel&quot; 
+3) (integer) 1
+</code></pre><h2 id="2-pubsub">2. PUBSUB</h2>
+<p>Redis <strong>PUBSUB</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xB0B4;&#xBD80; &#xAC80;&#xC0AC; &#xBA85;&#xB839;&#xC5B4;&#xB85C;, Pub/Sub &#xD558;&#xC704; &#xC2DC;&#xC2A4;&#xD15C;&#xC758; &#xC0C1;&#xD0DC;&#xB97C; &#xAC80;&#xC0AC;&#xD569;&#xB2C8;&#xB2E4;. &#xBCC4;&#xB3C4;&#xB85C; &#xBB38;&#xC11C;&#xD654;&#xB41C; &#xD558;&#xC704; &#xBA85;&#xB839;&#xC5B4;&#xB85C; &#xAD6C;&#xC131;&#xB418;&#xC5B4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>&#xB2E4;&#xC74C;&#xC740; <strong>PFCOUNT</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis 127.0.0.1:6379&gt; PFCOUNT KEY1 KEY@... KEYN
-</code></pre><h3 id="example">Example</h3>
-<pre><code>redis 127.0.0.1:6379&gt; PFADD mykey a b c d e f g h i j 
-(integer) 1 
-redis 127.0.0.1:6379&gt; PFCOUNT mykey 
-(integer) 10 
-redis 127.0.0.1:6379&gt; PFCOUNT mykey 
-(integer) 10 
-redis 127.0.0.1:6379&gt; PFCOUNT mykey mynewkey 
-(integer) 10
-</code></pre><h2 id="3-pfmerge">3. PFMERGE</h2>
-<p>Redis <strong>PFMERGE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; HyperLogLog&#xC758; &#xD569;&#xC9D1;&#xD569; &#xCE74;&#xB514;&#xB110;&#xB9AC;&#xD2F0;&#xB97C; &#xC608;&#xCE21;&#xD560; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xD558;&#xB098;&#xB85C; &#xBCD1;&#xD569;&#xD569;&#xB2C8;&#xB2E4;. </p>
-<h3 id="return-value">Return Value</h3>
-<p>&apos;OK&apos; String&#xC744; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>PUBSUB</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PUBSUB subcommand [argument [argument ...]]
+</code></pre><h3 id="return-value">Return Value</h3>
+<ul>
+<li>PUBSUB CHANNELS [pattern]: &#xC8FC;&#xC5B4;&#xC9C4; &#xD328;&#xD134;&#xACFC; &#xB9E4;&#xCE58;&#xB418;&#xB294; &#xD65C;&#xC131;&#xD654;&#xB41C; &#xCC44;&#xB110;(&#xD558;&#xB098; &#xC774;&#xC0C1;&#xC758; &#xAD6C;&#xB3C5;&#xC790;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xCC44;&#xB110;) &#xBAA9;&#xB85D;&#xC744; Array&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>PUBSUB NUMPAT : <strong>PSUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB97C; &#xD1B5;&#xD574; &#xAD6C;&#xB3C5;&#xC911;&#xC778; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; &#xC218;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>PUBSUB NUMSUB [channel-1 .. channel-N] : &#xD574;&#xB2F9; &#xCC44;&#xB110;&#xC758; &#xAD6C;&#xB3C5;&#xC790; &#xC218;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; PUBSUB CHANNELS 
+(empty list or set)
+</code></pre><h2 id="3-publish">3. PUBLISH</h2>
+<p>Redis <strong>PUBLISH</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xCC44;&#xB110;&#xC5D0; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xAC8C;&#xC2DC;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>&#xB2E4;&#xC74C;&#xC740; <strong>PFMERGE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis 127.0.0.1:6379&gt; PFMERGE KEY1 KEY@... KEYN
-</code></pre><h3 id="example">Example</h3>
-<pre><code>redis 127.0.0.1:6379&gt; PFADD hll1 foo bar zap a 
-(integer) 1 
-redis 127.0.0.1:6379&gt; PFADD hll2 a b c foo 
-(integer) 1 
-redis 127.0.0.1:6379&gt; PFMERGE hll3 hll1 hll2 
-OK 
-redis 127.0.0.1:6379&gt; PFCOUNT hll3 
-(integer) 6
-</code></pre><p><a href="ch14.html">Publish Subscribe</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>PUBLISH</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PUBLISH channel message
+</code></pre><h3 id="return-value">Return Value</h3>
+<p>&#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xC218;&#xC2E0;&#xD55C; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC758; &#xC218;&#xB97C; &#xC815;&#xC218;&#xAC12;&#xC73C;&#xB85C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; PUBLISH mychannel &quot;hello, i m here&quot; 
+(integer) 1
+</code></pre><h2 id="4-punsubscribe">4. PUNSUBSCRIBE</h2>
+<p>Redis <strong>PUNSUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; &#xD328;&#xD134;&#xC5D0; &#xB9E4;&#xCE58;&#xB418;&#xB294; &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5; &#xCDE8;&#xC18C;&#xD569;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xD328;&#xD134;&#xC774; &#xC8FC;&#xC5B4;&#xC9C0;&#xC9C0; &#xC54A;&#xC558;&#xB2E4;&#xBA74; &#xAD6C;&#xB3C5; &#xC911;&#xC774;&#xB358; &#xBAA8;&#xB4E0; &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5; &#xCDE8;&#xC18C;&#xD569;&#xB2C8;&#xB2E4;. </p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>PUNSUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; PUNSUBSCRIBE [pattern [pattern ...]]
+</code></pre><h3 id="return-value">Return Value</h3>
+<p>Array&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; PUNSUBSCRIBE mychannel  
+1) &quot;punsubscribe&quot; 
+2) &quot;a&quot; 
+3) (integer) 1
+</code></pre><h2 id="5-subscribe">5. SUBSCRIBE</h2>
+<p>Redis <strong>SUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xCC44;&#xB110;&#xC5D0; &#xAC8C;&#xC2DC;&#xB41C; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xC218;&#xC2E0;&#xD569;&#xB2C8;&#xB2E4;. &#xC5EC;&#xB7EC; &#xAC1C;&#xC758; &#xCC44;&#xB110;&#xC744; &#xC9C0;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>SUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; SUBSCRIBE channel [channel ...]
+</code></pre><h3 id="return-value">Return Value</h3>
+<p>Array&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; SUBSCRIBE mychannel  
+Reading messages... (press Ctrl-C to quit) 
+1) &quot;subscribe&quot; 
+2) &quot;mychannel&quot; 
+3) (integer) 1 
+1) &quot;message&quot; 
+2) &quot;mychannel&quot; 
+3) &quot;a&quot;
+</code></pre><h2 id="6-unsubscribe">6. UNSUBSCRIBE</h2>
+<p>Redis <strong>UNSUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xB294; &#xCC44;&#xB110;&#xB85C;&#xBD80;&#xD130; &#xB354;&#xC774;&#xC0C1; &#xBA54;&#xC138;&#xC9C0;&#xB97C; &#xBC1B;&#xC9C0; &#xC54A;&#xAC8C; &#xD569;&#xB2C8;&#xB2E4;. &#xC9C0;&#xC815;&#xB41C; &#xCC44;&#xB110;&#xC774; &#xC5C6;&#xC73C;&#xBA74; &#xB4F1;&#xB85D;&#xB41C; &#xBAA8;&#xB4E0; &#xCC44;&#xB110;&#xC744; &#xAD6C;&#xB3C5; &#xCDE8;&#xC18C;&#xD569;&#xB2C8;&#xB2E4;. </p>
+<h3 id="syntax">Syntax</h3>
+<p>&#xB2E4;&#xC74C;&#xC740; <strong>UNSUBSCRIBE</strong> &#xCEE4;&#xB9E8;&#xB4DC;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xBB38;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis 127.0.0.1:6379&gt; UNSUBSCRIBE channel [channel ...]
+</code></pre><h3 id="return-value">Return Value</h3>
+<p>Array&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="example">Example</h3>
+<pre><code>redis 127.0.0.1:6379&gt; UNSUBSCRIBE mychannel  
+1) &quot;unsubscribe&quot; 
+2) &quot;a&quot; 
+3) (integer) 1
+</code></pre><p><a href="ch15.html">Transactions</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -714,12 +773,12 @@ redis 127.0.0.1:6379&gt; PFCOUNT hll3
 
             
                 
-                <a href="ch12.html" class="navigation navigation-prev " aria-label="Previous page: Sorted Sets">
+                <a href="ch13.html" class="navigation navigation-prev " aria-label="Previous page: HyperLogLog">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ch14.html" class="navigation navigation-next " aria-label="Next page: Publish Subscribe">
+                <a href="ch15.html" class="navigation navigation-next " aria-label="Next page: Transactins">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -730,7 +789,7 @@ redis 127.0.0.1:6379&gt; PFCOUNT hll3
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"HyperLogLog","level":"1.3.8","depth":2,"next":{"title":"Publish Subscribe","level":"1.3.9","depth":2,"path":"ch14.md","ref":"./ch14.md","articles":[]},"previous":{"title":"Sorted Sets","level":"1.3.7","depth":2,"path":"ch12.md","ref":"./ch12.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch13.md","mtime":"2020-02-04T02:24:47.648Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-06T00:30:41.432Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Publish Subscribe","level":"1.3.9","depth":2,"next":{"title":"Transactins","level":"1.3.10","depth":2,"path":"ch15.md","ref":"./ch15.md","articles":[]},"previous":{"title":"HyperLogLog","level":"1.3.8","depth":2,"path":"ch13.md","ref":"./ch13.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch14.md","mtime":"2020-02-06T00:28:46.387Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-06T00:30:41.432Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

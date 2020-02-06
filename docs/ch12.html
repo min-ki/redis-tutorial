@@ -304,27 +304,27 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.9" >
+        <li class="chapter " data-level="1.3.9" data-path="ch14.html">
             
-                <span>
+                <a href="ch14.html">
             
                     
                     Publish Subscribe
             
-                </span>
+                </a>
             
 
             
         </li>
     
-        <li class="chapter " data-level="1.3.10" >
+        <li class="chapter " data-level="1.3.10" data-path="ch15.html">
             
-                <span>
+                <a href="ch15.html">
             
                     
                     Transactins
             
-                </span>
+                </a>
             
 
             
@@ -600,35 +600,38 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="sets">Sets</h1>
-<p>Redis&#xC758; Set &#xD0C0;&#xC785;&#xC740;, &#xC720;&#xB2C8;&#xD06C;&#xD55C; &#xBB38;&#xC790;&#xC5F4;&#xC758; &#xC9D1;&#xD569;&#xC785;&#xB2C8;&#xB2E4;. &#xC5EC;&#xAE30;&#xC11C; &quot;&#xC720;&#xB2C8;&#xD06C; &#xD558;&#xB2E4;&quot;&#xB780; &#xAC19;&#xC740; &#xD0A4;&#xC758; &#xC911;&#xBCF5;&#xC744; &#xD5C8;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xB77C;&#xB294; &#xB73B;&#xC785;&#xB2C8;&#xB2E4;. Redis&#xC758; Set&#xC740; add, remove, &#xC874;&#xC7AC; &#xC720;&#xBB34; &#xD655;&#xC778;&#xC744; O(1) &#xC989; &#xC0C1;&#xC218; &#xC2DC;&#xAC04;&#xC5D0; &#xCC98;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. Set&#xC774; &#xC800;&#xC7A5;&#xD560; &#xC218; &#xC788;&#xB294; &#xCD5C;&#xB300; &#xC6D0;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xB294; 2^32-1&#xAC1C;&#xC785;&#xB2C8;&#xB2E4;.</p>
+                                <h1 id="sorted-sets">Sorted Sets</h1>
+<p>Redis&#xC758; Sorted Set&#xC740; &#xAC12;&#xC744; &#xC800;&#xC7A5;&#xD558;&#xB294;&#xB370; &#xC788;&#xC5B4;&#xC11C;, Redis Set&#xACFC; &#xC720;&#xC0AC;&#xD569;&#xB2C8;&#xB2E4;. &#xCC28;&#xC774;&#xC810;&#xC740; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84;&#xAC00;, Score&#xC640; &#xC5F0;&#xAD00;&#xC774; &#xB418;&#xC5B4; &#xC788;&#xC5B4;&#xC11C;, &#xAC00;&#xC7A5; &#xC791;&#xC740; &#xC810;&#xC218;&#xB97C; &#xAC00;&#xC9C4; &#xBA64;&#xBC84;&#xC5D0;&#xC11C; &#xD070; &#xC810;&#xC218;&#xB97C; &#xAC00;&#xC9C4; &#xBA64;&#xBC84;&#xB85C; &#xC815;&#xB82C;&#xD558;&#xC5EC; &#xC800;&#xC7A5;&#xD55C;&#xB2E4;&#xB294; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>Sorted Set&#xC740; O(1)&#xC758; &#xBA64;&#xBC84;&#xB97C; &#xCD94;&#xAC00;, &#xC81C;&#xAC70; &#xC874;&#xC7AC; &#xC720;&#xBB34;&#xB97C; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xC73C;&#xBA70;, &#xCD5C;&#xB300; 2^32-1&#xAC1C;&#xB9CC;&#xD07C; &#xC694;&#xC18C;&#xB97C; &#xC800;&#xC7A5;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <h2 id="example">Example</h2>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 &#xD0A4;&#xC5D0; Set&#xC744; &#xB9CC;&#xB4E4;&#xACE0; redis &#xC800;&#xC7A5;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 redis
-(<span class="hljs-built_in">integer</span>) 1
+<pre><code class="lang-bash">redis 127.0.0.1:6379&gt; ZADD tutorials 1 redis 
+(<span class="hljs-built_in">integer</span>) 1 
+redis 127.0.0.1:6379&gt; ZADD tutorials 2 mongodb 
+(<span class="hljs-built_in">integer</span>) 1 
+redis 127.0.0.1:6379&gt; ZADD tutorials 3 mysql 
+(<span class="hljs-built_in">integer</span>) 1 
 
-<span class="hljs-comment"># set1&#xC5D0; mongo &#xC800;&#xC7A5;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 mongo
-(<span class="hljs-built_in">integer</span>) 1
+redis 127.0.0.1:6379&gt; ZRANGE tutorials 0 10 WITHSCORES  
+1) <span class="hljs-string">&quot;redis&quot;</span> 
+2) <span class="hljs-string">&quot;1&quot;</span> 
+3) <span class="hljs-string">&quot;mongodb&quot;</span> 
+4) <span class="hljs-string">&quot;2&quot;</span> 
+5) <span class="hljs-string">&quot;mysql&quot;</span> 
+6) <span class="hljs-string">&quot;3&quot;</span> 
 
-<span class="hljs-comment"># set1&#xC5D0; mysql &#xC800;&#xC7A5;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 mysql
-(<span class="hljs-built_in">integer</span>) 1
+redis 127.0.0.1:6379&gt; ZADD tutorials 4 mysql 
+(<span class="hljs-built_in">integer</span>) 0 
 
-<span class="hljs-comment"># set1&#xC5D0; mysql &#xC800;&#xC7A5;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 mysql
-<span class="hljs-comment"># &#xC2E4;&#xD328; &#xC774;&#xBBF8; &#xC800;&#xC7A5;&#xD558;&#xACE0; &#xC788;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;.</span>
-(<span class="hljs-built_in">integer</span>) 0
-
-<span class="hljs-comment"># &#xAC12; &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>1
-1) <span class="hljs-string">&quot;mysql&quot;</span>
-2) <span class="hljs-string">&quot;redis&quot;</span>
-3) <span class="hljs-string">&quot;mongo&quot;</span>
+redis 127.0.0.1:6379&gt; ZRANGE tutorials 0 10 WITHSCORES  
+1) <span class="hljs-string">&quot;redis&quot;</span> 
+2) <span class="hljs-string">&quot;1&quot;</span> 
+3) <span class="hljs-string">&quot;mongodb&quot;</span> 
+4) <span class="hljs-string">&quot;2&quot;</span> 
+5) <span class="hljs-string">&quot;mysql&quot;</span> 
+6) <span class="hljs-string">&quot;4&quot;</span>
 </code></pre>
-<p>&#xC704; &#xC608;&#xC81C;&#xB294; Redis Set&#xC758; SADD &#xD574;&#xC11C; &#xC6D0;&#xC18C;&#xB97C; &#xCD94;&#xAC00;&#xD558;&#xACE0;, SMEMBERS&#xB97C; &#xD1B5;&#xD574; &#xC6D0;&#xC18C;&#xB4E4;&#xC744; &#xD655;&#xC778;&#xD558;&#xB294; &#xB0B4;&#xC6A9;&#xC785;&#xB2C8;&#xB2E4;.</p>
-<h2 id="redis-sets-commands">Redis Sets Commands</h2>
+<p>&#xC704;&#xC758; &#xC608;&#xC81C;&#xC5D0;&#xC11C;&#xB294; Redis&#xC758; ZADD &#xBA85;&#xB839;&#xC5B4;&#xB97C; &#xC774;&#xC6A9;&#xD574; &quot;tutorials&quot; &#xB77C;&#xB294; Sorted Set&#xC744; &#xB9CC;&#xB4E4;&#xACE0;, &#xC2A4;&#xCF54;&#xC5B4;&#xC640; &#xD568;&#xAED8; 3&#xAC1C;&#xC758; &#xAC12;&#xB4E4;&#xC744; &#xC800;&#xC7A5;&#xD558;&#xC600;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h2 id="redis-sorted-sets-commands">Redis Sorted Sets Commands</h2>
 <table>
 <thead>
 <tr>
@@ -640,491 +643,640 @@ redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>1
 <tbody>
 <tr>
 <td>01</td>
-<td>SADD key member1 [member2 ..]</td>
-<td>&#xC14B;&#xC758; &#xD558;&#xB098; &#xC774;&#xC0C1;&#xC758; &#xBA64;&#xBC84;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZADD key score1 member1 [score2 member2]</td>
+<td>&#xD558;&#xB098; &#xC774;&#xC0C1;&#xC758; &#xBA64;&#xBC84;&#xB97C; Sorted Set&#xC5D0; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;. &#xC774;&#xBBF8; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;&#xBA74;, &#xC2A4;&#xCF54;&#xC5B4;&#xB9CC; &#xAC31;&#xC2E0;&#xB429;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>02</td>
-<td>SCARD key</td>
-<td>&#xC14B;&#xC758; &#xBA64;&#xBC84;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZCARD key</td>
+<td>Sorted Set&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>03</td>
-<td>SDIFF key1 [key2 ..]</td>
-<td>&#xC5EC;&#xB7EC; &#xC14B;&#xC758; &#xCC28;&#xC9D1;&#xD569;&#xC744; &#xAD6C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZCOUNT key min max</td>
+<td>min~max &#xC0AC;&#xC774;&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xAC00;&#xC9C4; &#xBA64;&#xBC84;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>04</td>
-<td>SDIFFSTORE destination key1 [key2 ..]</td>
-<td>&#xC5EC;&#xB7EC; &#xC14B;&#xC758; &#xCC28;&#xC9D1;&#xD569;&#xC744; &#xAD6C;&#xD55C; &#xB4A4; &#xD55C; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZINCRBY key increment member</td>
+<td>&#xBA64;&#xBC84;&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xC99D;&#xAC00;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>05</td>
-<td>SINTER key1 [key2 ..]</td>
-<td>&#xC5EC;&#xB7EC; &#xC14B;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC744; &#xAD6C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZINTERSTORE destination numkeys key [key ...]</td>
+<td>&#xC5EC;&#xB7EC; &#xC14B;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC744; &#xD558;&#xB098;&#xC758; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>06</td>
-<td>SINTERSTORE destination key1 [key2 ..]</td>
-<td>&#xC5EC;&#xB7EC; &#xC14B;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC744; &#xAD6C;&#xD55C; &#xB4A4; &#xD55C; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZLEXCOUNT key min max</td>
+<td>&#xC0AC;&#xC804; &#xC2DD; &#xBC94;&#xC704; &#xC0AC;&#xC774;&#xC5D0; &#xC788;&#xB294; &#xBA64;&#xBC84;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xC149;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>07</td>
-<td>SISMEMBER key member</td>
-<td>&#xC14B;&#xC758; &#xBA64;&#xBC84;&#xC778;&#xC9C0; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZRANGE key start stop [WITHSCORES]</td>
+<td>&#xD574;&#xB2F9; &#xBC94;&#xC704;&#xC5D0; &#xC874;&#xC7AC;&#xD558;&#xB294; Sorted Set&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xC778;&#xB371;&#xC2A4;&#xBCC4;&#xB85C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;</td>
 </tr>
 <tr>
 <td>08</td>
-<td>SMEMBERS key</td>
-<td>&#xC14B;&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</td>
+<td>ZRANGEBYLEX key min max [LIMIT offset count]</td>
+<td>&#xC0AC;&#xC804;&#xC2DD; &#xBC94;&#xC704;&#xC758; &#xC874;&#xC7AC;&#xD558;&#xB294; Sorted Set&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>09</td>
-<td>SMOVE source dstination member</td>
-<td>&#xD558;&#xB098;&#xC758; &#xC14B;&#xC5D0;&#xC11C; &#xB2E4;&#xB978; &#xC14B;&#xC73C;&#xB85C; &#xBA64;&#xBC84;&#xB97C; &#xC774;&#xB3D9;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]</td>
+<td>&#xC2A4;&#xCF54;&#xC5B4; &#xBC94;&#xC704;&#xC5D0; &#xC788;&#xB294; Sorted Set&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>10</td>
-<td>SPOP key</td>
-<td>&#xC14B;&#xC5D0;&#xC11C; &#xBB34;&#xC791;&#xC704;&#xB85C; &#xBA64;&#xBC84; &#xD558;&#xB098;&#xB97C; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZRANK key member</td>
+<td>Sorted Set&#xC758; &#xBA64;&#xBC84;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xACB0;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>11</td>
-<td>SRANDMEMBER key [count]</td>
-<td>&#xC14B;&#xC5D0;&#xC11C; &#xBB34;&#xC791;&#xC704;&#xB85C; &#xC5EC;&#xB7EC; &#xBA64;&#xBC84;&#xB97C; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</td>
+<td>ZREM key member [member ...]</td>
+<td>Sorted Set&#xC5D0;&#xC11C; &#xD558;&#xB098; &#xC774;&#xC0C1;&#xC758; &#xBA64;&#xBC84;&#xB97C; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>12</td>
-<td>SREM key member1 [member2 ..]</td>
-<td>&#xC14B;&#xC5D0;&#xC11C; &#xD558;&#xB098; &#xC774;&#xC0C1;&#xC758; &#xBA64;&#xBC84;&#xB97C; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZREMRANGEBYLEX key min max</td>
+<td>&#xC0AC;&#xC804;&#xC2DD; &#xBC94;&#xC704;&#xC5D0; &#xC788;&#xB294; Sorted Set&#xC758; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84;&#xB97C; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>13</td>
-<td>SUNION key1 [key2 ..]</td>
-<td>&#xC5EC;&#xB7EC; &#xC14B;&#xC758; &#xD569;&#xC9D1;&#xD569;&#xC744; &#xAD6C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZREMRANGEBYRANK key start stop</td>
+<td>&#xC8FC;&#xC5B4;&#xC9C4; &#xC778;&#xB371;&#xC2A4; &#xC548;&#xC5D0; &#xC788;&#xB294; Sorted Set&#xC758; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84;&#xB97C; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>14</td>
-<td>SUNIONSTORE destination key1 [key2 ..]</td>
-<td>&#xC5EC;&#xB7EC; &#xC14B;&#xC758; &#xD569;&#xC9D1;&#xD569;&#xC744; &#xAD6C;&#xD55C; &#xB4A4; &#xD55C; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZREMRANGEBYSCORE key min max</td>
+<td>&#xC8FC;&#xC5B4;&#xC9C4; &#xC2A4;&#xCF54;&#xC5B4; &#xC548;&#xC5D0; &#xC788;&#xB294; Sorted Set&#xC758; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 <tr>
 <td>15</td>
-<td>SSCAN key cursor [MATCH pattern] [COUNT count]</td>
-<td>&#xC138;&#xD2B8;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xC810;&#xC9C4;&#xC801;&#xC73C;&#xB85C; &#xBC18;&#xBCF5;&#xD569;&#xB2C8;&#xB2E4;.</td>
+<td>ZREVRANGE key start stop [WITHSCORES]</td>
+<td>Sorted Set&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xBC18;&#xD658;&#xD558;&#xBA70;, &#xC778;&#xB371;&#xC2A4;&#xC640; &#xD568;&#xAED8; &#xC2A4;&#xCF54;&#xC5B4; &#xAE30;&#xC900; &#xB0B4;&#xB9BC;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>ZREVRANGEBYSCORE key max min [WITHSCORES]</td>
+<td>Sorted Set&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xBC18;&#xD658;&#xD558;&#xBA70;, &#xC2A4;&#xCF54;&#xC5B4;&#xC5D0; &#xC758;&#xD574; &#xB0B4;&#xB9BC;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>ZREVRANK key member</td>
+<td>Sorted Set&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xACB0;&#xC815;&#xD558;&#xBA70;, &#xC2A4;&#xCF54;&#xC5B4; &#xAE30;&#xC900; &#xB0B4;&#xB9BC;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>ZSCORE key member</td>
+<td>Sorted Set&#xC5D0;&#xC11C; &#xC8FC;&#xC5B4;&#xC9C4; &#xBA64;&#xBC84;&#xC640; &#xAD00;&#xB828;&#xB41C; &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>ZUNIONSTORE destination numkeys key [key ...]</td>
+<td>&#xC5EC;&#xB7EC; Sorted Set&#xC758; &#xD569;&#xC9D1;&#xD569; &#xACB0;&#xACFC;&#xB97C; &#xC0C8; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xD569;&#xB2C8;&#xB2E4;.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>ZSCAN key cursor [MATCH pattern] [COUNT count]</td>
+<td>Sorted Set&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xC640; &#xC5F0;&#xAD00;&#xB41C; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xC810;&#xC9C4;&#xC801;&#xC73C;&#xB85C; &#xC21C;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="01-sadd-key-member1-member2-">01. SADD key member1 [member2 ..]</h2>
-<p>Redis&#xC5D0;&#xC11C; SADD &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC5D0;&#xC11C; &#xBA64;&#xBC84;&#xB97C; &#xCD94;&#xAC00;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xBA64;&#xBC84;&#xAC00; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;&#xBA74;, &#xC774;&#xAC83;&#xC740; &#xBB34;&#xC2DC;&#xB429;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74;, &#xC0C8;&#xB85C;&#xC6B4; &#xC14B;&#xC774; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C0;&#xACE0;, &#xBA64;&#xBC84;&#xB97C; &#xCD94;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;. &#xC14B;&#xC774; &#xC544;&#xB2CC; &#xAC12;&#xC744; &#xC800;&#xC7A5;&#xD558;&#xB294; &#xD0A4;&#xB77C;&#xBA74;, &#xC5D0;&#xB7EC;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="01-zadd-key-score1-member1-score2-member2">01. ZADD key score1 member1 [score2 member2]</h2>
+<p>Redis&#xC758; ZADD &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0; &#xD2B9;&#xC815; &#xC810;&#xC218;&#xC640; &#xD568;&#xAED8; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xCD94;&#xAC00;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. &#xD2B9;&#xC815; &#xB2E4;&#xC218;&#xC758; &#xC2A4;&#xCF54;&#xC5B4;/&#xBA64;&#xBC84; &#xC30D;&#xC73C;&#xB85C; &#xC800;&#xC7A5;&#xD558;&#xB294; &#xAC83;&#xC774; &#xAC00;&#xB2A5;&#xD569;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; sorted set&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;&#xBA74;, &#xC2A4;&#xCF54;&#xC5B4;&#xB9CC; &#xC5C5;&#xB370;&#xC774;&#xD2B8;&#xD558;&#xC5EC;, &#xC815;&#xB82C; &#xC21C;&#xC11C;&#xC5D0; &#xB9DE;&#xAC8C; &#xC7AC;&#xC0BD;&#xC785;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0;, sorted set&#xC774; &#xC0C8;&#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC9C0;&#xBA70; &#xADF8; &#xBE48; &#xC14B;&#xC5D0; &#xBA64;&#xBC84;&#xB97C; &#xC0BD;&#xC785;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xB098;, sorted set&#xC774; &#xC544;&#xB2D0; &#xACBD;&#xC6B0; &#xC5D0;&#xB7EC;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="return-value">Return Value</h3>
-<p>&#xC815;&#xC218;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;. &#xC14B;&#xC5D0; &#xCD94;&#xAC00;&#xB418;&#xBA74; 1, &#xC544;&#xB2C8;&#xB77C;&#xBA74; 0&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC815;&#xC218;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;. &#xC774; &#xC815;&#xC218;&#xB294;, sorted set&#xC758; &#xCD94;&#xAC00;&#xB41C; &#xC6D0;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xC774;&#xBA70;, score&#xAC00; &#xC5C5;&#xB370;&#xC774;&#xD2B8; &#xB41C; &#xACBD;&#xC6B0;, &#xAC1C;&#xC218;&#xC5D0; &#xD3EC;&#xD568;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>SADD &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SADD &lt;KEY_NAME&gt; &lt;VALUE1&gt; [&lt;VALUE2&gt; ..]
+<p>ZADD &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZADD &lt;KEY&gt; &lt;SCORE 1&gt; &lt;VALUE 1&gt; [ &lt;SCORE 2&gt; &lt;VALUE2&gt; ...]
 </code></pre><h3 id="example">Example</h3>
 <p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xC14B; &#xC0DD;&#xC131; &#xD6C4; redis &#xCD94;&#xAC00;</span>
-redis:6379&gt; SADD myset redis
+<pre><code class="lang-bash"><span class="hljs-comment"># myset 1-&quot;hello&quot; &#xCD94;&#xAC00;</span>
+redis:6379&gt; ZADD myset 1 <span class="hljs-string">&quot;hello&quot;</span>
 (<span class="hljs-built_in">integer</span>) 1
 
-<span class="hljs-comment"># myset&#xC5D0; mongo &#xCD94;&#xAC00;</span>
-redis:6379&gt; SADD myset mongo
-(<span class="hljs-built_in">integer</span>) 1
-
-<span class="hljs-comment"># myset&#xC5D0; mongo &#xCD94;&#xAC00; (&#xC2E4;&#xD328;)</span>
-redis:6379&gt; SADD myset mongo
-<span class="hljs-comment"># 0 - &#xC774;&#xBBF8; &#xC788;&#xB294; &#xBA64;&#xBC84;&#xB77C; &#xCD94;&#xAC00;&#xB418;&#xC9C0; &#xC54A;&#xC74C;&#xC744; &#xB098;&#xD0C0;&#xB0C4;</span>
+<span class="hljs-comment"># myset 3-&quot;hello&quot; &#xCD94;&#xAC00; &quot;hello&quot;&#xB294; &#xC788;&#xC73C;&#xBBC0;&#xB85C; &#xC2A4;&#xCF54;&#xC5B4;&#xB9CC; &#xC5C5;&#xB370;&#xC774;&#xD2B8;</span>
+redis:6379&gt; ZADD myset 3 <span class="hljs-string">&quot;hello&quot;</span>
+<span class="hljs-comment"># &#xADF8;&#xB798;&#xC11C; &#xCD94;&#xAC00; &#xAC1C;&#xC218;&#xB85C; &#xCE58;&#xC9C0; &#xC54A;&#xC544; 0</span>
 (<span class="hljs-built_in">integer</span>) 0
 
-<span class="hljs-comment"># myset&#xC5D0; &#xC800;&#xC7A5;&#xB418;&#xC5B4; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84; &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS myset
-1) <span class="hljs-string">&quot;redis&quot;</span>
-2) <span class="hljs-string">&quot;mongo&quot;</span>
-</code></pre>
-<h2 id="02-scard-key">02. SCARD key</h2>
-<p>Redis&#xC758; SCARD &#xBA85;&#xB839;&#xC5B4;&#xB294; Set&#xC5D0; &#xC800;&#xC7A5;&#xB418;&#xC5B4; &#xC788;&#xB294; &#xC6D0;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xB294;&#xB370; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>Set&#xC758; &#xAC1C;&#xC218;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC740; &#xD0A4;&#xB77C;&#xBA74; 0&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="syntax">Syntax</h3>
-<p>SCARD &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SCARD &lt;KEY_NAME&gt;
-</code></pre><h3 id="example">Example</h3>
-<pre><code class="lang-bash"><span class="hljs-comment"># &#xC14B;&#xC5D0; &#xBA64;&#xBC84; 2&#xAC1C; &#xCD94;&#xAC00;</span>
-redis:6379&gt; SADD myset hello
-(<span class="hljs-built_in">integer</span>) 1
-redis:6379&gt; SADD myset foo
-(<span class="hljs-built_in">integer</span>) 1
-
-<span class="hljs-comment"># &#xC14B; &#xAC1C;&#xC218; &#xD655;&#xC778;</span>
-redis:6379&gt; SCARD myset
+<span class="hljs-comment"># 2-&quot;Redis&quot; 3-&quot;Tutorial&quot; &#xCD94;&#xAC00;</span>
+redis:6379&gt; ZADD myset 2 <span class="hljs-string">&quot;Redis&quot;</span> 3 <span class="hljs-string">&quot;Tutorial&quot;</span>
 (<span class="hljs-built_in">integer</span>) 2
+
+<span class="hljs-comment"># myset &#xCC98;&#xC74C;&#xBD80;&#xD130; &#xB05D;&#xAE4C;&#xC9C0; &#xC2A4;&#xCF54;&#xC5B4;&#xC640; &#xD568;&#xAED8; &#xCD9C;&#xB825;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+1) <span class="hljs-string">&quot;Redis&quot;</span>
+2) <span class="hljs-string">&quot;2&quot;</span>
+3) <span class="hljs-string">&quot;Tutorial&quot;</span>
+4) <span class="hljs-string">&quot;3&quot;</span>
+5) <span class="hljs-string">&quot;hello&quot;</span>
+6) <span class="hljs-string">&quot;3&quot;</span>
 </code></pre>
-<h2 id="03-sdiff-key1-key2-">03. SDIFF key1 [key2 ..]</h2>
-<p>Redis&#xC758; SDIFF &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xCCAB; &#xBC88;&#xC9F8; &#xC14B;&#xACFC; &#xADF8; &#xC774;&#xD6C4;&#xC758; &#xBAA8;&#xB4E0; &#xC14B;&#xB4E4; &#xC0AC;&#xC774;&#xC758; &#xCC28;&#xC9D1;&#xD569;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. Redis&#xC5D0; &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xB54C;, &#xBE48; &#xC14B;&#xC73C;&#xB85C; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="02-zcard-key">02. ZCARD key</h2>
+<p>Redis&#xC758; ZCARD &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="return-value">Return Value</h3>
-<p>&#xCC28;&#xC9D1;&#xD569;&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xC6D0;&#xC18C;&#xB85C; &#xD558;&#xB294; &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>sorted set&#xC774; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xB294; &#xC6D0;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB2E4;&#xBA74;, 0&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>SDIFF &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SDIFF &lt;FIRST_KEY&gt; [&lt;OTHER_KEY&gt; ...]
+<p>ZCARD &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZCARD &lt;KEY&gt;
 </code></pre><h3 id="example">Example</h3>
 <p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># set2 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>2 2 3
-(<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># set1 &#xAE30;&#xC900;, set1-set2&#xC778; &#xC9D1;&#xD569; &#xBC18;&#xD658; {1, 4, 5}</span>
-redis:6379&gt; SDIFF <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;4&quot;</span>
-3) <span class="hljs-string">&quot;5&quot;</span>
-</code></pre>
-<h2 id="04-sdiffstore-destination-key1-key2-">04. SDIFFSTORE destination key1 [key2 ..]</h2>
-<p>Redis&#xC758; SDIFFSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xCCAB; &#xBC88;&#xC9F8; &#xC14B;&#xACFC; &#xADF8; &#xC774;&#xD6C4;&#xC5D0; &#xB098;&#xC624;&#xB294; &#xC14B;&#xB4E4;&#xC758; &#xCC28;&#xC9D1;&#xD569;&#xC744; &#xBA64;&#xBC84;&#xB85C; &#xD558;&#xB294; &#xC14B;&#xC744; &#xC800;&#xC7A5;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D;, &#xC774;&#xBBF8; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xD0A4;&#xC5D0; &#xC774; &#xC5F0;&#xC0B0;&#xC744; &#xC218;&#xD589;&#xD55C;&#xB2E4;&#xBA74;, &#xB36E;&#xC5B4; &#xC501;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xACB0;&#xACFC;&#xC778; &#xC14B;&#xC758; &#xC6D0;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="syntax">Syntax</h3>
-<p>SDIFFSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SDIFFSTORE &lt;DESTINATION_SET&gt; &lt;KEY1&gt; &lt;KEY2&gt; [...]
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># set2 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>2 2 3
-(<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># set3&#xC5D0; set1 - set2 &#xC800;&#xC7A5;</span>
-redis:6379&gt; SDIFFSTORE <span class="hljs-built_in">set</span>3 <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xC6D0;&#xC18C; 3&#xAC1C; &#xCD94;&#xAC00;</span>
+redis:6379&gt; ZADD myset 1 <span class="hljs-string">&quot;hello&quot;</span> 2 <span class="hljs-string">&quot;Redis&quot;</span> 3 <span class="hljs-string">&quot;Tutorial&quot;</span>
 (<span class="hljs-built_in">integer</span>) 3
 
-<span class="hljs-comment"># set3 &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>3
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;4&quot;</span>
-3) <span class="hljs-string">&quot;5&quot;</span>
+<span class="hljs-comment"># myset &#xAC1C;&#xC218; &#xBC18;&#xD658;</span>
+redis:6379&gt; ZCARD myset
+(<span class="hljs-built_in">integer</span>) 3
 </code></pre>
-<h2 id="05-sinter-key1-key2-">05. SINTER key1 [key2 ..]</h2>
-<p>Redis&#xC758; SINTER &#xBA85;&#xB839;&#xC5B4;&#xB294;, &#xC14B;&#xB4E4;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC744; &#xC5BB;&#xACE0; &#xC2F6;&#xC744; &#xB54C; &#xC4F0;&#xC785;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC5C6;&#xB2E4;&#xBA74;, &#xBE48; &#xC14B;&#xC73C;&#xB85C; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;. &#xD558;&#xB098;&#xB77C;&#xB3C4; &#xBE48; &#xC14B;&#xC774; &#xC788;&#xB2E4;&#xBA74; &#xACB0;&#xACFC;&#xB294; &#xBE48; &#xC14B;&#xC774; &#xB098;&#xC635;&#xB2C8;&#xB2E4;. (&#xAD50;&#xC9D1;&#xD569;&#xC774;&#xB2C8;&#xAE4C;;;)</p>
+<h2 id="03-zcount-key-min-max">03. ZCOUNT key min max</h2>
+<p>Redis&#xC758; ZCOUNT &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xC6D0;&#xC18C;&#xB4E4; &#xC911; min&#xACFC; max &#xC0AC;&#xC774;&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xAC00;&#xC9C4; &#xC6D0;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="return-value">Return Value</h3>
-<p>&#xC8FC;&#xC5B4;&#xC9C4; &#xC14B;&#xB4E4;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC758; &#xBC30;&#xC5F4;&#xC774; &#xACB0;&#xACFC;&#xB85C; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC2A4;&#xCF54;&#xC5B4; &#xBC94;&#xC704; &#xC548;&#xC5D0; &#xC788;&#xB294; &#xC6D0;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>SINTER &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SINTER &lt;KEY1&gt; [&lt;KEY2&gt; ...]
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># set2 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>2 2 3
-(<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># SINTER &#xC2E4;&#xD589;, A n B = B {2, 3}</span>
-redis:6379&gt; SINTER <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2
-1) <span class="hljs-string">&quot;2&quot;</span>
-2) <span class="hljs-string">&quot;3&quot;</span>
-</code></pre>
-<h2 id="06-sinterstore-destination-key1-key2-">06. SINTERSTORE destination key1 [key2 ..]</h2>
-<p>Redis&#xC758; SINTERSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294;, &#xC14B;&#xB4E4;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC744; &#xD2B9;&#xC815; &#xD0A4;&#xC758; &#xC800;&#xC7A5;&#xD560; &#xB54C; &#xC4F0;&#xC785;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC5C6;&#xB2E4;&#xBA74;, &#xBE48; &#xC14B;&#xC73C;&#xB85C; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;. &#xD558;&#xB098;&#xB77C;&#xB3C4; &#xBE48; &#xC14B;&#xC774; &#xC788;&#xB2E4;&#xBA74; &#xACB0;&#xACFC;&#xB294; &#xBE48; &#xC14B;&#xC774; &#xC800;&#xC7A5;&#xB429;&#xB2C8;&#xB2E4;. (&#xAD50;&#xC9D1;&#xD569;&#xC774;&#xB2C8;&#xAE4C;;;)</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xC8FC;&#xC5B4;&#xC9C4; &#xC14B;&#xB4E4;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC778; &#xC14B;&#xC758; &#xC6D0;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="syntax">Syntax</h3>
-<p>SINTERSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SINTERSTORE &lt;DESTINATION_KEY&gt; &lt;KEY1&gt; [&lt;KEY2&gt; ...]
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># set2 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>2 2 3
-(<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># SINTERSTORE &#xC2E4;&#xD589; set3 {2, 3} // set1 n set2 = set2</span>
-redis:6379&gt; SINTERSTORE <span class="hljs-built_in">set</span>3 <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2
-(<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># set3 &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>3
-1) <span class="hljs-string">&quot;2&quot;</span>
-2) <span class="hljs-string">&quot;3&quot;</span>
-</code></pre>
-<h2 id="07-sismember-key-member">07. SISMEMBER key member</h2>
-<p>Redis&#xC758; SISMEMBER&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC5D0; &#xC6D0;&#xC18C;&#xAC00; &#xC788;&#xB294;&#xC9C0; &#xC5C6;&#xB294;&#xC9C0; &#xC54C;&#xC544;&#xBCFC; &#xB54C; &#xC501;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xC815;&#xC218;&#xD615;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<ul>
-<li>&#xC14B;&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC788;&#xB2E4;&#xBA74; 1&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
-<li>&#xC14B;&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC5C6;&#xB2E4;&#xBA74; 0&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
-</ul>
-<h3 id="syntax">Syntax</h3>
-<p>SISMEMBER &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SISMEMBER &lt;KEY&gt; &lt;VALUE&gt;
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 2 3
-(<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># set1&#xC5D0; 2&#xAC00; &#xC788;&#xB294;&#xC9C0; &#xD655;&#xC778;</span>
-redis:6379&gt; SISMEMBER <span class="hljs-built_in">set</span>1 2
-<span class="hljs-comment"># 2&#xAC00; &#xC874;&#xC7AC;&#xD574;&#xC11C; 1&#xC744; &#xBC18;&#xD658;</span>
-(<span class="hljs-built_in">integer</span>) 1
-
-<span class="hljs-comment"># set1&#xC5D0; 1&#xC774; &#xC788;&#xB294;&#xC9C0; &#xD655;&#xC778;</span>
-redis:6379&gt; SISMEMBER <span class="hljs-built_in">set</span>1 1
-<span class="hljs-comment"># 1&#xC774; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xB2C8; 0&#xC744; &#xBC18;&#xD658;</span>
-(<span class="hljs-built_in">integer</span>) 0
-</code></pre>
-<h2 id="08-smembers-key">08. SMEMBERS key</h2>
-<p>Redis&#xC758; SMEMBERS &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC758; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84;&#xB97C; &#xAC00;&#xC838;&#xC624;&#xB294;&#xB370; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xC14B;&#xC758; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84;&#xB97C; &#xC6D0;&#xC18C;&#xB85C; &#xD558;&#xB294; &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="syntax">Syntax</h3>
-<p>SMEMBERS &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SMEMBERS &lt;KEY_NAME&gt;
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># SMEMBERS set1&#xC758; &#xBAA8;&#xB4E0; &#xBA64;&#xBC84; &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>1
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;2&quot;</span>
-3) <span class="hljs-string">&quot;3&quot;</span>
-4) <span class="hljs-string">&quot;4&quot;</span>
-5) <span class="hljs-string">&quot;5&quot;</span>
-</code></pre>
-<h2 id="09-smove-source-dstination-member">09. SMOVE source dstination member</h2>
-<p>Redis&#xC758; SMOVE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD558;&#xB098;&#xC758; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC758; &#xBA64;&#xBC84;&#xB97C; &#xB2E4;&#xB978; &#xC14B;&#xC758; &#xBA64;&#xBC84;&#xB85C; &#xC774;&#xB3D9;&#xC2DC;&#xD0A4;&#xB294; &#xBA85;&#xB839;&#xC5B4;&#xC785;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xAC70;&#xB098;, &#xC6D0;&#xC18C;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; &#xC774; &#xC5F0;&#xC0B0;&#xC740; &#xC2E4;&#xD589;&#xB418;&#xC9C0; &#xC54A;&#xACE0; 0&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xADF8; &#xC678;&#xC5D0;&#xB294;, source&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xC14B;&#xC758; &#xBA64;&#xBC84;&#xB294; &#xC0AD;&#xC81C;&#xB418;&#xACE0; destination&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xC14B;&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xCD94;&#xAC00;&#xB429;&#xB2C8;&#xB2E4;. destination&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xC14B;&#xC5D0; &#xD574;&#xB2F9; &#xBA64;&#xBC84;&#xAC00; &#xC874;&#xC7AC;&#xD55C;&#xB2E4;&#xBA74;, source&#xC5D0; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xC14B;&#xC5D0;&#xC11C; &#xBA64;&#xBC84;&#xB9CC; &#xC0AD;&#xC81C;&#xB429;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xB9CC;&#xC57D; &#xC14B; &#xD0C0;&#xC785;&#xC758; &#xAC12;&#xC744; &#xAC16;&#xACE0; &#xC788;&#xC9C0; &#xC54A;&#xB2E4;&#xBA74; &#xC5D0;&#xB7EC;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xC815;&#xC218;&#xD615;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<ul>
-<li>&#xBA64;&#xBC84;&#xC758; &#xC774;&#xB3D9;&#xC774; &#xC131;&#xACF5;&#xD588;&#xB2E4;&#xBA74; 1&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;</li>
-<li>&#xBA64;&#xBC84;&#xC758; &#xC774;&#xB3D9;&#xC774; &#xC2E4;&#xD328;&#xD588;&#xB2E4;&#xBA74; 0&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;</li>
-</ul>
-<h3 id="syntax">Syntax</h3>
-<p>SMOVE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SMOVE &lt;SOURCE_KEY&gt; &lt;DESTINATION_KEY&gt; &lt;MEMBER&gt;
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># set2 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>2 2 3
-(<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xD0A4; set4&#xC5D0; &#xC5F0;&#xC0B0; &#xC2E4;&#xD589;(&#xC2E4;&#xD328;)</span>
-redis:6379&gt; SMOVE <span class="hljs-built_in">set</span>4 <span class="hljs-built_in">set</span>2 0
-(<span class="hljs-built_in">integer</span>) 0
-
-<span class="hljs-comment"># set1&#xC5D0; &#xC5C6;&#xB294; &#xBA64;&#xBC84; &#xC5F0;&#xC0B0; &#xC2E4;&#xD589;(&#xC2E4;&#xD328;)</span>
-redis:6379&gt; SMOVE <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2 6
-(<span class="hljs-built_in">integer</span>) 0
-
-<span class="hljs-comment"># set1&#xC5D0; &#xC788;&#xB294; &#xBA64;&#xBC84; &#xC5F0;&#xC0B0; &#xC2E4;&#xD589;(&#xC131;&#xACF5;)</span>
-redis:6379&gt; SMOVE <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2 1
-(<span class="hljs-built_in">integer</span>) 1
-
-<span class="hljs-comment"># set2 &#xACB0;&#xACFC; &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>2
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;2&quot;</span>
-3) <span class="hljs-string">&quot;3&quot;</span>
-</code></pre>
-<h2 id="10-spop-key">10. SPOP key</h2>
-<p>Redis&#xC758; SPOP &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC758; &#xBA64;&#xBC84;&#xB4E4; &#xC911; &#xBB34;&#xC791;&#xC704;&#xB85C; &#xD558;&#xB098; &#xC0AD;&#xC81C;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>&#xC0AD;&#xC81C;&#xB41C; &#xC6D0;&#xC18C;&#xAC00; &#xBC18;&#xD658;&#xB418;&#xAC70;&#xB098;, &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0;, nil&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<h3 id="syntax">Syntax</h3>
-<p>SPOP &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SPOP &lt;KEY&gt;
+<p>ZCOUNT &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZCOUNT &lt;KEY&gt; &lt;MIN&gt; &lt;MAX&gt;
 </code></pre><h3 id="example">Example</h3>
 <p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xC0DD;&#xC131;</span>
+redis:6379&gt; ZADD myset 1 <span class="hljs-string">&quot;Hello&quot;</span> 2 <span class="hljs-string">&quot;Redis&quot;</span> 3 <span class="hljs-string">&quot;Tutorial&quot;</span>
+(<span class="hljs-built_in">integer</span>) 3
 
-<span class="hljs-comment"># SPOP &#xC218;&#xD589;</span>
-redis:6379&gt; SPOP <span class="hljs-built_in">set</span>1
-<span class="hljs-comment"># &#xBB34;&#xC791;&#xC704;&#xB85C; 2&#xAC00; &#xC0AD;&#xC81C;&#xB428;</span>
-<span class="hljs-string">&quot;2&quot;</span>
-
-<span class="hljs-comment"># SPOP &#xC5F0;&#xC0B0; &#xACB0;&#xACFC; &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>1
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;3&quot;</span>
-3) <span class="hljs-string">&quot;4&quot;</span>
-4) <span class="hljs-string">&quot;5&quot;</span>
+<span class="hljs-comment"># &#xC2A4;&#xCF54;&#xC5B4; 2 ~ 3 &#xC778; &#xC6D0;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218; &#xBC18;&#xD658;</span>
+redis:6379&gt; ZCOUNT myset 2 3
+(<span class="hljs-built_in">integer</span>) 2
 </code></pre>
-<h2 id="11-srandmember-key-count">11. SRANDMEMBER key [count]</h2>
-<p>Redis&#xC758; SRANDMEMBER &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC73C;&#xB85C;&#xBD80;&#xD130; &#xBB34;&#xC791;&#xC704;&#xB85C; &#xBA64;&#xBC84;&#xB97C; &#xAC00;&#xC838;&#xC62C; &#xB54C; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. &quot;count&quot;&#xB97C; &#xC778;&#xC218;&#xB85C; &#xC8FC;&#xC5B4;&#xC11C; &#xBB34;&#xC791;&#xC704;&#xB85C; &#xAC00;&#xC838;&#xC62C; &#xBA64;&#xBC84;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xC870;&#xC808;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC591;&#xC218;&#xB85C; &#xAC1C;&#xC218;&#xB97C; &#xC8FC;&#xC5C8;&#xC744; &#xB550;, &#xC911;&#xBCF5;&#xC744; &#xD5C8;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xC9C0;&#xB9CC;, &#xC74C;&#xC218;&#xB85C; &#xAC1C;&#xC218;&#xB97C; &#xC8FC;&#xC5C8;&#xC744; &#xB550; &#xC911;&#xBCF5;&#xC744; &#xD5C8;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;. &#xC774; &#xACBD;&#xC6B0;, &#xD2B9;&#xC815; &#xAC1C;&#xC218;&#xC758; &#xC808;&#xB300; &#xAC12;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h2 id="04-zincrby-key-increment-member">04. ZINCRBY key increment member</h2>
 <h3 id="return-value">Return Value</h3>
-<p>count &#xC778;&#xC218;&#xAC00; &#xC5C6;&#xB2E4;&#xBA74;, &#xB2E8;&#xC21C; &#xBB38;&#xC790;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74;, nil&#xC744; &#xBC18;&#xD658;&#xD558;&#xBA70;, &#xADF8;&#xB807;&#xC9C0; &#xC54A;&#xB2E4;&#xBA74; &#xC784;&#xC758;&#xB85C; &#xC120;&#xD0DD;&#xB41C; &#xC694;&#xC18C;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. count &#xC694;&#xC18C;&#xB97C; &#xCD94;&#xAC00;&#xC801;&#xC73C;&#xB85C; &#xC900;&#xB2E4;&#xBA74;, &#xBC30;&#xC5F4;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74;, &#xBE48; &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>Redis&#xC758; ZINCRBY &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xBA64;&#xBC84;&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xC99D;&#xAC00;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xC14B;&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC5C6;&#xB2E4;&#xBA74;, &#xC2A4;&#xCF54;&#xC5B4; 0&#xC5D0; &#xBA64;&#xBC84;&#xB97C; &#xC800;&#xC7A5;&#xD55C; &#xD6C4;, &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xC99D;&#xAC00;&#xC2DC;&#xD0B5;&#xB2C8;&#xB2E4;. &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74;, &#xBE48; &#xC14B;&#xC758; &#xBA64;&#xBC84;&#xB97C; &#xB9CC;&#xB4E4;&#xACE0;, &#xBA64;&#xBC84;&#xB97C; &#xB9CC;&#xB4ED;&#xB2C8;&#xB2E4;. &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xAC83;&#xC774; sorted set&#xC774; &#xC544;&#xB2C8;&#xB77C;&#xBA74;, &#xC5D0;&#xB7EC;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>SRANDMEMBER &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SRANDMEMBER &lt;KEY&gt; [&lt;COUNT&gt;]
-</code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># set1 &#xC5D0;&#xC11C; &#xBB34;&#xC791;&#xC704;&#xB85C; &#xD558;&#xB098; &#xC120;&#xD0DD;</span>
-redis:6379&gt; SRANDMEMBER <span class="hljs-built_in">set</span>1
-<span class="hljs-string">&quot;4&quot;</span>
-
-<span class="hljs-comment"># &#xAC1C;&#xC218;&#xB97C; &#xC8FC;&#xC5C8;&#xC744; &#xB550; &#xADF8;&#xB9CC;&#xD07C; &#xBF51;&#xC744; &#xC218; &#xC788;&#xC74C;</span>
-redis:6379&gt; SRANDMEMBER <span class="hljs-built_in">set</span>1 2
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;3&quot;</span>
-
-<span class="hljs-comment"># &#xC74C;&#xC218;&#xB85C; &#xC8FC;&#xC5C8;&#xC744; &#xB550; &#xAC1C;&#xC218;&#xB9CC;&#xD07C; &#xBF51;&#xB418;, &#xBC18;&#xBCF5; &#xC694;&#xC18C; &#xAC00;&#xB2A5;</span>
-redis:6379&gt; SRANDMEMBER <span class="hljs-built_in">set</span>1 -3
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;5&quot;</span>
-3) <span class="hljs-string">&quot;5&quot;</span>
-
-<span class="hljs-comment"># &#xC5C6;&#xB294; &#xBC30;&#xC5F4;&#xC758; &#xACBD;&#xC6B0;&#xB294; &#xBE48; &#xB9AC;&#xC2A4;&#xD2B8;&#xB77C;&#xACE0; &#xC54C;&#xB824;&#xC90C;</span>
-redis:6379&gt; SRANDMEMBER <span class="hljs-built_in">set</span>5 2
-(empty list or <span class="hljs-built_in">set</span>)
-</code></pre>
-<h2 id="12-srem-key-member1-member2-">12. SREM key member1 [member2 ..]</h2>
-<p>Redis&#xC758; SREM &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC758; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC73C;&#xB85C;&#xBD80;&#xD130; &#xC8FC;&#xC5B4;&#xC9C4; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xBA64;&#xBC84;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74; 0&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xAC12;&#xC774; set&#xC774; &#xC544;&#xB2C8;&#xB77C;&#xBA74; &#xC5D0;&#xB7EC;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
-<h3 id="return-value">Return Value</h3>
-<p>set&#xC5D0;&#xC11C; &#xC0AD;&#xC81C;&#xB41C; &#xC694;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xBA70;, &#xBA64;&#xBC84;&#xB85C; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xC694;&#xC18C;&#xB4E4;&#xC740; &#xD3EC;&#xD568;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<h3 id="syntax">Syntax</h3>
-<p>SREM &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SREM &lt;KEY&gt; &lt;MEMBER1&gt; [&lt;MEMBER2&gt; ..]
+<p>ZINCRBY &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZINCRBY &lt;KEY&gt; &lt;INCREMENT&gt; &lt;MEMBER&gt;
 </code></pre><h3 id="example">Example</h3>
 <p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xC0DD;&#xC131;</span>
+redis:6379&gt; ZADD myset 1 Hello 2 Redis 3 Tutorial
+(<span class="hljs-built_in">integer</span>) 3
 
-<span class="hljs-comment"># SREM &#xC2E4;&#xD589;, 2, 3 &#xC874;&#xC7AC;, 6&#xC740; &#xC874;&#xC7AC;x</span>
-redis:6379&gt; SREM <span class="hljs-built_in">set</span>1 2 3 6
-<span class="hljs-comment"># 2, 3 &#xC9C0;&#xC6CC;&#xC838;&#xC11C; &#xC9C0;&#xC6D0;&#xC9C4; &#xAC1C;&#xC218; &#xBC18;&#xD658;</span>
-(<span class="hljs-built_in">integer</span>) 2
+<span class="hljs-comment"># myset &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+1) <span class="hljs-string">&quot;Hello&quot;</span>
+2) <span class="hljs-string">&quot;1&quot;</span>
+3) <span class="hljs-string">&quot;Redis&quot;</span>
+4) <span class="hljs-string">&quot;2&quot;</span>
+5) <span class="hljs-string">&quot;Tutorial&quot;</span>
+6) <span class="hljs-string">&quot;3&quot;</span>
 
-<span class="hljs-comment"># SREM &#xC5F0;&#xC0B0; &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>1
-1) <span class="hljs-string">&quot;1&quot;</span>
+<span class="hljs-comment"># myset tutorial &#xC2A4;&#xCF54;&#xC5B4; 2 &#xC99D;&#xAC00;</span>
+redis:6379&gt; ZINCRBY myset 2 Tutorial
+<span class="hljs-string">&quot;5&quot;</span>
+
+<span class="hljs-comment"># &#xC5F0;&#xC0B0; &#xACB0;&#xACFC; &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+1) <span class="hljs-string">&quot;Hello&quot;</span>
+2) <span class="hljs-string">&quot;1&quot;</span>
+3) <span class="hljs-string">&quot;Redis&quot;</span>
+4) <span class="hljs-string">&quot;2&quot;</span>
+5) <span class="hljs-string">&quot;Tutorial&quot;</span>
+6) <span class="hljs-string">&quot;5&quot;</span>
+</code></pre>
+<h2 id="05-zinterstore-destination-numkeys-key-key-">05. ZINTERSTORE destination numkeys key [key ...]</h2>
+<p>Redis&#xC758; ZINTERSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; sorted set&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC744; destination&#xC5D0; &#xC800;&#xC7A5;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. &#xC774;&#xB54C;, &#xC785;&#xB825; &#xD0A4;&#xB4E4;&#xC744; &#xC804;&#xB2EC;&#xD558;&#xAE30; &#xC804;&#xC5D0; &#xD0A4;&#xB4E4;&#xC758; &#xAC1C;&#xC218; numkeys&#xB97C; &#xC804;&#xB2EC;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>sorted set&#xB4E4;&#xC758; &#xAD50;&#xC9D1;&#xD569;&#xC778; destination&#xC758; &#xC6D0;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZINTESTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZINTERSTORE &lt;DESTINATION KEY&gt; &lt;NUMKEY&gt; &lt;KEY 1&gt; .. &lt;KEY N&gt; [WEIGHT ..]
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xC0DD;&#xC131;</span>
+redis:6379&gt; ZADD myset 1 Hello 2 Redis 3 Tutorial
+(<span class="hljs-built_in">integer</span>) 3
+
+<span class="hljs-comment"># myset2 &#xC0DD;&#xC131;</span>
+redis:6379&gt; ZADD myset2 1 Hell 2 Redis 3 Fuck
+(<span class="hljs-built_in">integer</span>) 3
+
+<span class="hljs-comment"># &#xAD50;&#xC9D1;&#xD569; myset n myset2 = myset3</span>
+redis:6379&gt; ZINTERSTORE myset3 2 myset myset2
+(<span class="hljs-built_in">integer</span>) 1
+
+<span class="hljs-comment"># myset3 &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset3 0 -1 WITHSCORES
+1) <span class="hljs-string">&quot;Redis&quot;</span>
 2) <span class="hljs-string">&quot;4&quot;</span>
-3) <span class="hljs-string">&quot;5&quot;</span>
 </code></pre>
-<h2 id="13-sunion-key1-key2-">13. SUNION key1 [key2 ..]</h2>
-<p>Redis&#xC758; SUNION &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; &#xC14B;&#xB4E4;&#xC758; &#xD569;&#xC9D1;&#xD569;&#xC744; &#xACB0;&#xACFC;&#xB85C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB2E4;&#xBA74; &#xBE48;&#xC14B;&#xC73C;&#xB85C; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="06-zlexcount-key-min-max">06. ZLEXCOUNT key min max</h2>
+<p>Redis&#xB294; ZLEXCOUNT &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xAC00; &#xB3D9;&#xC77C;&#xD55C; &#xC810;&#xC218;&#xB85C; &#xC0BD;&#xC785;&#xB418;&#xC5C8;&#xC744; &#xB54C;, &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xC0AC;&#xC804; &#xC21C;&#xC11C;&#xB85C; &#xC815;&#xB82C;&#xC2DC;&#xD0A4;&#xBA70;, sorted set&#xC758; &#xC694;&#xC18C;&#xB4E4; &#xC911; &#xCD5C;&#xC18C;&#xAC12;&#xACFC; &#xCD5C;&#xB300;&#xAC12; &#xC0AC;&#xC774;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="return-value">Return Value</h3>
-<p>&#xD569;&#xC9D1;&#xD569;&#xC73C;&#xB85C; &#xB098;&#xC628; &#xC14B;&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC744; &#xC694;&#xC18C;&#xB85C;&#xD558;&#xB294; &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD2B9;&#xC815; &#xC2A4;&#xCF54;&#xC5B4; &#xBC94;&#xC704;&#xC5D0; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xC694;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>SUNION &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SUNION &lt;KEY1&gt; [&lt;KEY2&gt; ..]
+<p>ZLEXCOUNT &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZLEXCOUNT &lt;KEY&gt; &lt;MIN&gt; &lt;MAX&gt;
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 0 b 0 c 0 d 0 e 0 f 0 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># myset &#xCD9C;&#xB825;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+ 1) <span class="hljs-string">&quot;a&quot;</span>
+ 2) <span class="hljs-string">&quot;0&quot;</span>
+ 3) <span class="hljs-string">&quot;b&quot;</span>
+ 4) <span class="hljs-string">&quot;0&quot;</span>
+ 5) <span class="hljs-string">&quot;c&quot;</span>
+ 6) <span class="hljs-string">&quot;0&quot;</span>
+ 7) <span class="hljs-string">&quot;d&quot;</span>
+ 8) <span class="hljs-string">&quot;0&quot;</span>
+ 9) <span class="hljs-string">&quot;e&quot;</span>
+10) <span class="hljs-string">&quot;0&quot;</span>
+11) <span class="hljs-string">&quot;f&quot;</span>
+12) <span class="hljs-string">&quot;0&quot;</span>
+13) <span class="hljs-string">&quot;g&quot;</span>
+14) <span class="hljs-string">&quot;0&quot;</span>
+
+<span class="hljs-comment"># b-f &#xBC94;&#xC704;&#xC758; &#xC694;&#xC18C; &#xAC1C;&#xC218; &#xD310;&#xB2E8;</span>
+redis:6379&gt; ZLEXCOUNT myset [b [f
+(<span class="hljs-built_in">integer</span>) 5
+</code></pre>
+<h2 id="07-zrange-key-start-stop-withscores">07. ZRANGE key start stop [WITHSCORES]</h2>
+<p>Redis&#xC758; ZRANGE &#xBA85;&#xB839;&#xC5B4;&#xB294;, &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0;&#xC11C; &#xD2B9;&#xC815; &#xBC94;&#xC704;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xAC00;&#xC838;&#xC635;&#xB2C8;&#xB2E4;. &#xADF8; &#xC694;&#xC18C;&#xB4E4;&#xC740; &#xC624;&#xB984;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xB418;&#xC5B4;&#xC788;&#xB2E4;&#xACE0;, &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC804;&#xC2DD; &#xC21C;&#xC11C;&#xB294;, &#xAC19;&#xC740; &#xC2A4;&#xCF54;&#xC5B4;&#xC758; &#xACBD;&#xC6B0; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. start, stop&#xC740; &#xC778;&#xB371;&#xC2A4;&#xB85C;&#xC368; 0&#xBD80;&#xD130; &#xC2DC;&#xC791;&#xD558;&#xBA70; 0&#xC774; &#xCCAB;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;, 1&#xC774; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C;, &#xC74C;&#xC218; &#xC778;&#xB371;&#xC2A4;&#xB3C4; &#xC9C0;&#xC6D0;&#xD558;&#xBA70; -1&#xC740; &#xAC00;&#xC7A5; &#xB9C8;&#xC9C0;&#xB9C9; &#xC6D0;&#xC18C;, -2&#xB294; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0;&#xC11C; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD2B9;&#xC815; &#xBC94;&#xC704; &#xC548;&#xC758; &#xC694;&#xC18C;&#xB4E4;, &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZRANGE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZRANGE &lt;KEY&gt; &lt;START&gt; &lt;STOP&gt; [WITHSCORES]
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 0 b 0 c 0 d 0 e 0 f 0 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># myset &#xCD9C;&#xB825; 0&#xC5D0;&#xC11C; -1(&#xB05D;)&#xAE4C;&#xC9C0; &#xC810;&#xC218;&#xC640; &#xD568;&#xAED8;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+ 1) <span class="hljs-string">&quot;a&quot;</span>
+ 2) <span class="hljs-string">&quot;0&quot;</span>
+ 3) <span class="hljs-string">&quot;b&quot;</span>
+ 4) <span class="hljs-string">&quot;0&quot;</span>
+ 5) <span class="hljs-string">&quot;c&quot;</span>
+ 6) <span class="hljs-string">&quot;0&quot;</span>
+ 7) <span class="hljs-string">&quot;d&quot;</span>
+ 8) <span class="hljs-string">&quot;0&quot;</span>
+ 9) <span class="hljs-string">&quot;e&quot;</span>
+10) <span class="hljs-string">&quot;0&quot;</span>
+11) <span class="hljs-string">&quot;f&quot;</span>
+12) <span class="hljs-string">&quot;0&quot;</span>
+13) <span class="hljs-string">&quot;g&quot;</span>
+14) <span class="hljs-string">&quot;0&quot;</span>
+</code></pre>
+<h2 id="08-zrangebylex-key-min-max-limit-offset-count">08. ZRANGEBYLEX key min max [LIMIT offset count]</h2>
+<p>Redis&#xC758; ZRANGEBYLEX &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xC694;&#xC18C;&#xB4E4; &#xC911; &#xD2B9;&#xC815; &#xBC94;&#xC704;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xADF8; &#xC694;&#xC18C;&#xB4E4;&#xC740; &#xC624;&#xB984;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&#xACE0; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC804;&#xC2DD; &#xC21C;&#xC11C;&#xB294;, &#xAC19;&#xC740; &#xC2A4;&#xCF54;&#xC5B4;&#xC758; &#xACBD;&#xC6B0; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. start, stop&#xC740; &#xC778;&#xB371;&#xC2A4;&#xB85C;&#xC368; 0&#xBD80;&#xD130; &#xC2DC;&#xC791;&#xD558;&#xBA70; 0&#xC774; &#xCCAB;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;, 1&#xC774; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C;, &#xC74C;&#xC218; &#xC778;&#xB371;&#xC2A4;&#xB3C4; &#xC9C0;&#xC6D0;&#xD558;&#xBA70; -1&#xC740; &#xAC00;&#xC7A5; &#xB9C8;&#xC9C0;&#xB9C9; &#xC6D0;&#xC18C;, -2&#xB294; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0;&#xC11C; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD2B9;&#xC815; &#xC2A4;&#xCF54;&#xC5B4; &#xBC94;&#xC704;&#xC5D0; &#xC788;&#xB294; &#xC694;&#xC18C;&#xB4E4;&#xC758; &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZRANGEBYLEX &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZRANGEBYLEX &lt;KEY&gt; &lt;MIN&gt; &lt;MAX&gt; [LIMIT OFFSET COUNT]
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 0 b 0 c 0 d 0 e 0 f 0 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># myset &#xBA64;&#xBC84;&#xB294; c &#xC774;&#xD558;&#xAE4C;&#xC9C0;</span>
+redis:6379&gt; ZRANGEBYLEX myset - [c
+1) <span class="hljs-string">&quot;a&quot;</span>
+2) <span class="hljs-string">&quot;b&quot;</span>
+3) <span class="hljs-string">&quot;c&quot;</span>
+
+<span class="hljs-comment"># myset &#xBA64;&#xBC84;&#xB294; c &#xBBF8;&#xB9CC;&#xAE4C;&#xC9C0;</span>
+redis:6379&gt; ZRANGEBYLEX myset - (c
+1) <span class="hljs-string">&quot;a&quot;</span>
+2) <span class="hljs-string">&quot;b&quot;</span>
+</code></pre>
+<h2 id="09-zrangebyscore-key-min-max-withscores-limit">09. ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT]</h2>
+<p>Redis&#xC758; ZRANGEBYSCORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; min&#xACFC; max &#xC0AC;&#xC774;&#xC758; &#xBAA8;&#xB4E0; &#xC6D0;&#xC18C;&#xB4E4;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xADF8; &#xC694;&#xC18C;&#xB4E4;&#xC740; &#xC624;&#xB984;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xB418;&#xC5B4; &#xC788;&#xB2E4;&#xACE0; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC804;&#xC2DD; &#xC21C;&#xC11C;&#xB294;, &#xAC19;&#xC740; &#xC2A4;&#xCF54;&#xC5B4;&#xC758; &#xACBD;&#xC6B0; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. start, stop&#xC740; &#xC778;&#xB371;&#xC2A4;&#xB85C;&#xC368; 0&#xBD80;&#xD130; &#xC2DC;&#xC791;&#xD558;&#xBA70; 0&#xC774; &#xCCAB;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;, 1&#xC774; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C;, &#xC74C;&#xC218; &#xC778;&#xB371;&#xC2A4;&#xB3C4; &#xC9C0;&#xC6D0;&#xD558;&#xBA70; -1&#xC740; &#xAC00;&#xC7A5; &#xB9C8;&#xC9C0;&#xB9C9; &#xC6D0;&#xC18C;, -2&#xB294; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0;&#xC11C; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD2B9;&#xC815; &#xC2A4;&#xCF54;&#xC5B4; &#xBC94;&#xC704;&#xC758; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xC6D0;&#xC18C;&#xB4E4;&#xC758; &#xBC30;&#xC5F4;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<pre><code>redis:6379&gt; ZRANGEBYSCORE &lt;KEY&gt; &lt;MIN&gt; &lt;MAX&gt; [WITHSCORES] [LIMIT OFFSET COUNT]
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># &#xC2A4;&#xCF54;&#xC5B4; 1~3&#xAE4C;&#xC9C0; &#xBAA8;&#xB4E0; &#xC694;&#xC18C; &#xAC00;&#xC838;&#xC624;&#xAE30; </span>
+redis:6379&gt; ZRANGEBYSCORE myset 1 3
+1) <span class="hljs-string">&quot;b&quot;</span>
+2) <span class="hljs-string">&quot;c&quot;</span>
+3) <span class="hljs-string">&quot;d&quot;</span>
+</code></pre>
+<h2 id="10-zrank-key-member">10. ZRANK key member</h2>
+<p>Redis&#xC758; ZRANK &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xBA64;&#xBC84;&#xC758; &#xB7AD;&#xD06C;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xB294;&#xB370; &#xC4F0;&#xC785;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D;, &#xAC19;&#xC740; &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xC9C0;&#xB154;&#xB2E4;&#xBA74; &#xC0AC;&#xC804; &#xC21C;&#xC73C;&#xB85C; &#xB7AD;&#xD06C;&#xB97C; &#xB9E4;&#xAE41;&#xB2C8;&#xB2E4;. &#xB7AD;&#xD06C;&#xB294; 0&#xBD80;&#xD130; &#xC2DC;&#xC791;&#xD558;&#xBA70;, &#xC774;&#xAC83;&#xC740; &#xAC00;&#xC7A5; &#xB0AE;&#xC740; &#xC2A4;&#xCF54;&#xC5B4;&#xB294; &#xB7AD;&#xD06C; 0&#xB97C; &#xB73B;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<ul>
+<li>&#xB9CC;&#xC57D; sorted set&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC788;&#xB2E4;&#xBA74;, &#xBA64;&#xBC84;&#xC758; rank&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xB9CC;&#xC57D; sorted set&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC5C6;&#xAC70;&#xB098; &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294;&#xB2E4;&#xBA74; nil&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<h3 id="syntax">Syntax</h3>
+<p>ZRANK &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZRANK &lt;KEY&gt; &lt;MEMBER&gt;
 </code></pre><h3 id="example">Example</h3>
 <p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
 
-<span class="hljs-comment"># set2 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>2 2 3
+<span class="hljs-comment"># c &#xB7AD;&#xD06C; &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANK myset c
 (<span class="hljs-built_in">integer</span>) 2
-
-<span class="hljs-comment"># SUNION set1 U set2 = set1</span>
-redis:6379&gt; SUNION <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;2&quot;</span>
-3) <span class="hljs-string">&quot;3&quot;</span>
-4) <span class="hljs-string">&quot;4&quot;</span>
-5) <span class="hljs-string">&quot;5&quot;</span>
 </code></pre>
-<h2 id="14-sunionstore-destination-key1-key2-">14. SUNIONSTORE destination key1 [key2 ..]</h2>
-<p>Redis&#xC758; SUNIONSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; &#xC14B;&#xB4E4;&#xC758; &#xD569;&#xC9D1;&#xD569;&#xC744; &#xC0C8;&#xB85C;&#xC6B4; &#xC14B;&#xC73C;&#xB85C; &#xC800;&#xC7A5;&#xD558;&#xB294;&#xB370; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;. &#xB9CC;&#xC57D; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC740; &#xD0A4;&#xB77C;&#xBA74;, &#xBE48; &#xC14B;&#xC73C;&#xB85C; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="11-zrem-key-member-member-">11. ZREM key member [member ...]</h2>
+<p>Redis&#xC758; ZREM &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0; &#xD2B9;&#xC815; &#xBA64;&#xBC84;&#xB97C; &#xC0AD;&#xC81C;&#xD560; &#xB54C; &#xC4F0;&#xC785;&#xB2C8;&#xB2E4;. &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC740; &#xBA64;&#xBC84;&#xB77C;&#xBA74; &#xBB34;&#xC2DC;&#xB429;&#xB2C8;&#xB2E4;. &#xD0A4;&#xC5D0; sorted set &#xD0C0;&#xC785;&#xC774; &#xC800;&#xC7A5;&#xB418;&#xC5B4; &#xC788;&#xC9C0; &#xC54A;&#xB2E4;&#xBA74;, &#xC5D0;&#xB7EC;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h3 id="return-value">Return Value</h3>
-<p>&#xD569;&#xC9D1;&#xD569;&#xC758; &#xC694;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>sorted set&#xC73C;&#xB85C;&#xBD80;&#xD130; &#xC0AD;&#xC81C;&#xB41C; &#xBA64;&#xBC84;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xBA64;&#xBC84;&#xB294; &#xD3EC;&#xD568;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>SUNIONSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SUNIONSTORE &lt;DESTINATION_KEY&gt; &lt;KEY1&gt; [&lt;KEY2&gt; ...]
+<p>ZREM &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZREM &lt;KEY&gt; &lt;MEMBER 1&gt; [&lt;MEMBER 2&gt; ...]
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># a &#xC0AD;&#xC81C; &#xC2DC;&#xB3C4; (&#xC131;&#xACF5;)</span>
+redis:6379&gt; ZREM myset a
+<span class="hljs-comment"># a 1&#xAC1C;&#xB9CC; &#xC9C0;&#xC6B0;&#xBBC0;&#xB85C; 1 &#xBC18;&#xD658; </span>
+(<span class="hljs-built_in">integer</span>) 1
+
+<span class="hljs-comment"># a &#xC0AD;&#xC81C; &#xC2DC;&#xB3C4; (&#xC2E4;&#xD328;)</span>
+redis:6379&gt; ZREM myset a
+<span class="hljs-comment"># a &#xAC00;&#xC5C6;&#xC73C;&#xB2C8; &#xBB34;&#xC2DC;&#xB428; 0 &#xBC18;&#xD658;</span>
+(<span class="hljs-built_in">integer</span>) 0
+
+<span class="hljs-comment"># b, g, z &#xC0AD;&#xC81C;</span>
+redis:6379&gt; ZREM myset b g z
+<span class="hljs-comment"># b, g &#xC0AD;&#xC81C; 2&#xAC1C; (z&#xB294; &#xC5C6;&#xC73C;&#xBBC0;&#xB85C; &#xCE58;&#xC9C0; &#xC54A;&#xC74C;)</span>
+(<span class="hljs-built_in">integer</span>) 2
+</code></pre>
+<h2 id="12-zremrangebylex-key-min-max">12. ZREMRANGEBYLEX key min max</h2>
+<p>Redis&#xC758; ZREMRANGEBYLEX&#xB294; &#xD2B9;&#xC815; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0;&#xC11C; &#xC0AC;&#xC804;&#xC2DD; &#xBC94;&#xC704;, min&#xACFC; max &#xC0AC;&#xC774;&#xC5D0; &#xC788;&#xB294; &#xBAA8;&#xB4E0; &#xC6D0;&#xC18C;&#xB4E4;&#xC744; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC0AD;&#xC81C;&#xB41C; &#xC694;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZREMRANGEBYLEX &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZREMRANGEBYLEX &lt;KEY&gt; &lt;MIN&gt; &lt;MAX&gt;
 </code></pre><h3 id="example">Example</h3>
 <p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># set1 {1, 2, 3, 4, 5} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>1 1 2 3 4 5
-(<span class="hljs-built_in">integer</span>) 5
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
 
-<span class="hljs-comment"># set2 {2, 3} &#xC0DD;&#xC131;</span>
-redis:6379&gt; SADD <span class="hljs-built_in">set</span>2 2 3
+<span class="hljs-comment"># myset &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1
+1) <span class="hljs-string">&quot;a&quot;</span>
+2) <span class="hljs-string">&quot;b&quot;</span>
+3) <span class="hljs-string">&quot;c&quot;</span>
+4) <span class="hljs-string">&quot;qwe&quot;</span>
+5) <span class="hljs-string">&quot;d&quot;</span>
+6) <span class="hljs-string">&quot;e&quot;</span>
+7) <span class="hljs-string">&quot;f&quot;</span>
+8) <span class="hljs-string">&quot;g&quot;</span>
+
+<span class="hljs-comment"># a ~ b &#xBA64;&#xBC84; &#xC0AD;&#xC81C;</span>
+redis:6379&gt; ZREMRANGEBYLEX myset [a [b
 (<span class="hljs-built_in">integer</span>) 2
 
-<span class="hljs-comment"># SUNIONSTORE set3 = set1 U set2 = set1</span>
-redis:6379&gt; SUNIONSTORE <span class="hljs-built_in">set</span>3 <span class="hljs-built_in">set</span>1 <span class="hljs-built_in">set</span>2
-(<span class="hljs-built_in">integer</span>) 5
-
-<span class="hljs-comment"># SUNIONSTORE &#xD655;&#xC778;</span>
-redis:6379&gt; SMEMBERS <span class="hljs-built_in">set</span>3
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) <span class="hljs-string">&quot;2&quot;</span>
-3) <span class="hljs-string">&quot;3&quot;</span>
-4) <span class="hljs-string">&quot;4&quot;</span>
-5) <span class="hljs-string">&quot;5&quot;</span>
+<span class="hljs-comment"># myset &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1
+1) <span class="hljs-string">&quot;c&quot;</span>
+2) <span class="hljs-string">&quot;qwe&quot;</span>
+3) <span class="hljs-string">&quot;d&quot;</span>
+4) <span class="hljs-string">&quot;e&quot;</span>
+5) <span class="hljs-string">&quot;f&quot;</span>
+6) <span class="hljs-string">&quot;g&quot;</span>
 </code></pre>
-<h2 id="15-sscan-key-cursor-match-pattern-count-count">15. SSCAN key cursor [MATCH pattern] [COUNT count]</h2>
-<p>Redis&#xC758; SSCAN &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; &#xC14B;&#xC758; &#xC6D0;&#xC18C;&#xB4E4;&#xC744; &#xC21C;&#xD68C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="13-zremrangebyrank-key-start-stop">13. ZREMRANGEBYRANK key start stop</h2>
+<p>Redis&#xC758; ZREMRANGEBYRANK &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0; &#xB300;&#xD574;&#xC11C; &#xB7AD;&#xD06C;&#xB97C; &#xAE30;&#xC900;&#xC73C;&#xB85C; start~stop &#xC0AC;&#xC774;&#xC758; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;. start, stop&#xC740; &#xC778;&#xB371;&#xC2A4;&#xB85C;&#xC368; 0&#xBD80;&#xD130; &#xC2DC;&#xC791;&#xD558;&#xBA70; 0&#xC774; &#xCCAB;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;, 1&#xC774; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;. &#xB610;&#xD55C;, &#xC74C;&#xC218; &#xC778;&#xB371;&#xC2A4;&#xB3C4; &#xC9C0;&#xC6D0;&#xD558;&#xBA70; -1&#xC740; &#xAC00;&#xC7A5; &#xB9C8;&#xC9C0;&#xB9C9; &#xC6D0;&#xC18C;, -2&#xB294; &#xB9C8;&#xC9C0;&#xB9C9;&#xC5D0;&#xC11C; &#xB450;&#xBC88;&#xC9F8; &#xC6D0;&#xC18C;&#xC758; &#xC778;&#xB371;&#xC2A4;&#xB97C; &#xD45C;&#xD604;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC81C;&#xAC70;&#xB41C; &#xC694;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZREMRANGEBYRANK &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZREMRANGEBYRANK &lt;KEY&gt; &lt;START&gt; &lt;STOP&gt;
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0;&#xC11C; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># rank 0~3&#xAE4C;&#xC9C0; &#xC0AD;&#xC81C; </span>
+redis:6379&gt; ZREMRANGEBYRANK myset 0 3
+(<span class="hljs-built_in">integer</span>) 4
+
+<span class="hljs-comment"># &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1
+1) <span class="hljs-string">&quot;e&quot;</span>
+2) <span class="hljs-string">&quot;f&quot;</span>
+3) <span class="hljs-string">&quot;g&quot;</span>
+</code></pre>
+<h2 id="14-zremrangebyscore-key-min-max">14. ZREMRANGEBYSCORE key min max</h2>
+<p>Redis&#xC758; ZREMRANGEBYSCORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0; &#xB300;&#xD574;, &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xAE30;&#xC900;&#xC73C;&#xB85C; min&#xC5D0;&#xC11C; max &#xC0AC;&#xC774;&#xC758; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xC0AD;&#xC81C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC0AD;&#xC81C;&#xB41C; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xB4E4;&#xC758; &#xAC1C;&#xC218;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZREMRANGEBYSCORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZREMRANGEBYSCORE &lt;KEY&gt; &lt;MIN&gt; &lt;MAX&gt;
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># myset&#xC5D0;&#xC11C; &#xC2A4;&#xCF54;&#xC5B4; 3~5 &#xC694;&#xC18C;&#xB4E4; &#xC0AD;&#xC81C;</span>
+redis:6379&gt; ZREMRANGEBYSCORE myset 3 5
+(<span class="hljs-built_in">integer</span>) 3
+
+<span class="hljs-comment"># myset &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+1) <span class="hljs-string">&quot;a&quot;</span>
+2) <span class="hljs-string">&quot;0&quot;</span>
+3) <span class="hljs-string">&quot;b&quot;</span>
+4) <span class="hljs-string">&quot;1&quot;</span>
+5) <span class="hljs-string">&quot;c&quot;</span>
+6) <span class="hljs-string">&quot;2&quot;</span>
+7) <span class="hljs-string">&quot;g&quot;</span>
+8) <span class="hljs-string">&quot;6&quot;</span>
+</code></pre>
+<h2 id="15-zrevrange-key-start-stop-withscores">15. ZREVRANGE key start stop [WITHSCORES]</h2>
+<p>Redis&#xC758; ZREVRANGE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xD2B9;&#xC815; &#xBC94;&#xC704;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xC694;&#xC18C;&#xB4E4;&#xC740; &#xB0B4;&#xB9BC;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xB418;&#xC5B4;&#xC788;&#xB2E4;&#xACE0; &#xAC04;&#xC8FC;&#xB429;&#xB2C8;&#xB2E4;. &#xAC19;&#xC740; &#xC2A4;&#xCF54;&#xC5B4;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC740; &#xC0AC;&#xC804;&#xC21C;&#xC73C;&#xB85C; &#xB0B4;&#xB9BC;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD2B9;&#xC815; &#xBC94;&#xC704;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC758; &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZREVRANGE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZREVRANGE &lt;KEY&gt; &lt;MIN&gt; &lt;MAX&gt;
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># ZREVRANGE &#xC2E4;&#xD589; &#xC5ED;&#xC21C;&#xC73C;&#xB85C; &#xCD9C;&#xB825;.</span>
+redis:6379&gt; ZREVRANGE myset 0 -1
+1) <span class="hljs-string">&quot;g&quot;</span>
+2) <span class="hljs-string">&quot;f&quot;</span>
+3) <span class="hljs-string">&quot;e&quot;</span>
+4) <span class="hljs-string">&quot;d&quot;</span>
+5) <span class="hljs-string">&quot;c&quot;</span>
+6) <span class="hljs-string">&quot;b&quot;</span>
+7) <span class="hljs-string">&quot;a&quot;</span>
+</code></pre>
+<h2 id="16-zrevrangebyscore-key-max-min-withscores">16. ZREVRANGEBYSCORE key max min [WITHSCORES]</h2>
+<p>Redis&#xC758; ZREVRANGEBYSCORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0; &#xB300;&#xD574;&#xC11C; score &#xAE30;&#xC900; max&#xC640; min &#xC0AC;&#xC774;&#xC758; &#xBAA8;&#xB4E0; &#xC694;&#xC18C;&#xB4E4;&#xC744; &#xC5ED;&#xC21C;&#xC73C;&#xB85C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; sorted set&#xC758; &#xC21C;&#xC11C;&#xC640; &#xB2EC;&#xB9AC; &#xC774; &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xC694;&#xC18C;&#xB4E4;&#xC774; &#xB0B4;&#xB9BC;&#xCC28;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xB418;&#xC5B4;&#xC788;&#xB2E4;&#xACE0; &#xAC04;&#xC8FC;&#xD569;&#xB2C8;&#xB2E4;. &#xAC19;&#xC740; &#xC2A4;&#xCF54;&#xC5B4;&#xC758; &#xC694;&#xC18C;&#xB77C;&#xBA74;, &#xC0AC;&#xC804;&#xC21C;&#xC73C;&#xB85C; &#xC5ED;&#xC21C;&#xC73C;&#xB85C; &#xC815;&#xB82C;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xD2B9;&#xC815; &#xC2A4;&#xCF54;&#xC5B4; &#xBC94;&#xC704;&#xC758; &#xC694;&#xC18C;&#xB4E4;&#xC758; &#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZREVRANGEBYSCORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9D1;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZREVRANGEBYSCORE &lt;KEY&gt; &lt;MAX&gt; &lt;MIN&gt; [WITHSCORES] [LIMIT offset count]
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># score &#xAE30;&#xC900; &#xC5ED;&#xC21C; &#xCD9C;&#xB825;</span>
+redis:6379&gt; ZREVRANGEBYSCORE myset +inf -inf
+1) <span class="hljs-string">&quot;g&quot;</span>
+2) <span class="hljs-string">&quot;f&quot;</span>
+3) <span class="hljs-string">&quot;e&quot;</span>
+4) <span class="hljs-string">&quot;d&quot;</span>
+5) <span class="hljs-string">&quot;c&quot;</span>
+6) <span class="hljs-string">&quot;b&quot;</span>
+7) <span class="hljs-string">&quot;a&quot;</span>
+</code></pre>
+<h2 id="17-zrevrank-key-member">17. ZREVRANK key member</h2>
+<p>Redis&#xC758; ZREVRANGK &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC758; &#xBA64;&#xBC84;&#xB4E4;&#xC758; &#xB7AD;&#xD06C;&#xB97C; &#xC5ED;&#xC21C;&#xC73C;&#xB85C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xC989; &#xC774; &#xBA85;&#xB839;&#xC5B4;&#xB85C; &#xC5BB;&#xC740; &#xB7AD;&#xD06C;&#xB294; &#xC2A4;&#xCF54;&#xC5B4;&#xAC00; &#xB192;&#xC744;&#xC218;&#xB85D; &#xB0AE;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB7AD;&#xD06C;&#xB294; 0&#xBD80;&#xD130; &#xC2DC;&#xC791;&#xD558;&#xBA70;, &#xC774;&#xB294; &#xAC00;&#xC7A5; &#xB192;&#xC740; &#xB7AD;&#xD06C;&#xAC00; 0&#xC784;&#xC744; &#xB73B;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<ul>
+<li>sorted set&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC788;&#xC744; &#xACBD;&#xC6B0;, &#xADF8; &#xBA64;&#xBC84;&#xC758; &#xB7AD;&#xD06C;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. </li>
+<li>sorted set&#xC5D0; &#xBA64;&#xBC84;&#xAC00; &#xC5C6;&#xAC70;&#xB098;, &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0;, nil&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<h3 id="syntax">Syntax</h3>
+<p>ZREVRANK &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZREVRANK &lt;KEY&gt; &lt;MEMBER&gt;
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># myset &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+ 1) <span class="hljs-string">&quot;a&quot;</span>
+ 2) <span class="hljs-string">&quot;0&quot;</span>
+ 3) <span class="hljs-string">&quot;b&quot;</span>
+ 4) <span class="hljs-string">&quot;1&quot;</span>
+ 5) <span class="hljs-string">&quot;c&quot;</span>
+ 6) <span class="hljs-string">&quot;2&quot;</span>
+ 7) <span class="hljs-string">&quot;d&quot;</span>
+ 8) <span class="hljs-string">&quot;3&quot;</span>
+ 9) <span class="hljs-string">&quot;e&quot;</span>
+10) <span class="hljs-string">&quot;4&quot;</span>
+11) <span class="hljs-string">&quot;f&quot;</span>
+12) <span class="hljs-string">&quot;5&quot;</span>
+13) <span class="hljs-string">&quot;g&quot;</span>
+14) <span class="hljs-string">&quot;6&quot;</span>
+
+<span class="hljs-comment"># a &#xB7AD;&#xD06C; &#xD655;&#xC778;</span>
+redis:6379&gt; ZREVRANK myset a
+<span class="hljs-comment"># a &#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xB294; 0 &#xB530;&#xB77C;&#xC11C; &#xB7AD;&#xD06C;&#xB294; 6</span>
+(<span class="hljs-built_in">integer</span>) 6
+
+<span class="hljs-comment"># g &#xB7AD;&#xD06C; &#xD655;&#xC778;</span>
+redis:6379&gt; ZREVRANK myset g
+<span class="hljs-comment"># g&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xB294; 6 &#xB530;&#xB77C;&#xC11C; &#xB7AD;&#xD06C;&#xB294; 0</span>
+(<span class="hljs-built_in">integer</span>) 0
+</code></pre>
+<h2 id="18-zscore-key-member">18. ZSCORE key member</h2>
+<p>Redis&#xC758; ZSCORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xD0A4;&#xC5D0; &#xC800;&#xC7A5;&#xB41C; sorted set&#xC5D0; &#xBA64;&#xBC84;&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xBA64;&#xBC84;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xAC70;&#xB098;, &#xD0A4;&#xAC00; &#xC874;&#xC7AC;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xACBD;&#xC6B0; nil&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xBA64;&#xBC84;&#xC758; &#xC2A4;&#xCF54;&#xC5B4;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZSCORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZSCORE &lt;KEY&gt; &lt;MEMBER&gt;
+</code></pre><h3 id="example">Example</h3>
+<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD574;&#xC8FC;&#xC138;&#xC694;.</p>
+<pre><code class="lang-bash">redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># myset &#xD655;&#xC778;</span>
+redis:6379&gt; ZRANGE myset 0 -1 WITHSCORES
+ 1) <span class="hljs-string">&quot;a&quot;</span>
+ 2) <span class="hljs-string">&quot;0&quot;</span>
+ 3) <span class="hljs-string">&quot;b&quot;</span>
+ 4) <span class="hljs-string">&quot;1&quot;</span>
+ 5) <span class="hljs-string">&quot;c&quot;</span>
+ 6) <span class="hljs-string">&quot;2&quot;</span>
+ 7) <span class="hljs-string">&quot;d&quot;</span>
+ 8) <span class="hljs-string">&quot;3&quot;</span>
+ 9) <span class="hljs-string">&quot;e&quot;</span>
+10) <span class="hljs-string">&quot;4&quot;</span>
+11) <span class="hljs-string">&quot;f&quot;</span>
+12) <span class="hljs-string">&quot;5&quot;</span>
+13) <span class="hljs-string">&quot;g&quot;</span>
+14) <span class="hljs-string">&quot;6&quot;</span>
+
+<span class="hljs-comment"># a &#xC2A4;&#xCF54;&#xC5B4; &#xD655;&#xC778;</span>
+redis:6379&gt; ZSCORE myset a
+<span class="hljs-string">&quot;0&quot;</span>
+
+<span class="hljs-comment"># g &#xC2A4;&#xCF54;&#xC5B4; &#xD655;&#xC778;</span>
+redis:6379&gt; ZSCORE myset g
+<span class="hljs-string">&quot;6&quot;</span>
+</code></pre>
+<h2 id="19-zunionstore-destination-numkeys-key-key-">19. ZUNIONSTORE destination numkeys key [key ...]</h2>
+<p>Redis&#xC758; ZUNIONSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xC8FC;&#xC5B4;&#xC9C4; numkey &#xB9CC;&#xD07C; sorted set&#xC758; &#xD0A4;&#xB4E4;&#xC744; &#xBC1B;&#xC544; &#xD569;&#xC9D1;&#xD569;&#xC744; &#xB9CC;&#xB4E4;&#xACE0;, destination&#xC5D0; &#xADF8; &#xACB0;&#xACFC;&#xB97C; &#xC800;&#xC7A5;&#xD569;&#xB2C8;&#xB2E4;. &#xC785;&#xB825; &#xD0A4;&#xC640;&#xB97C; &#xC804;&#xB2EC;&#xD558;&#xAE30; &#xC804;&#xC5D0; &#xC120;&#xD0DD;&#xC801;&#xC73C;&#xB85C;, WEIGHTS, AGGREGATE &#xB4F1; &#xB2E4;&#xB978; &#xC778;&#xC218;&#xB97C; &#xC804;&#xB2EC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h3 id="return-value">Return Value</h3>
+<p>&#xC14B;&#xB4E4;&#xC758; &#xD569;&#xC9D1;&#xD569; &#xACB0;&#xACFC;&#xC778; destination&#xC758; &#xC6D0;&#xC18C;&#xC758; &#xAC1C;&#xC218;&#xAC00; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<h3 id="syntax">Syntax</h3>
+<p>ZUNIONSTORE &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZUNIONSTORE &lt;DESTINATION_KEY&gt; &lt;NUMKEYS&gt; &lt;KEY 1&gt; .. &lt;KEY N&gt; [WEIGHTS weight [weight ...]] [AGGREGATE SUN|MIN|MAX]
+</code></pre><h3 id="example">Example</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># myset &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset 0 a 1 b 2 c 3 d 4 e 5 f 6 g
+(<span class="hljs-built_in">integer</span>) 7
+
+<span class="hljs-comment"># myset2 &#xCD08;&#xAE30;&#xD654;</span>
+redis:6379&gt; ZADD myset2 1 z 2 c 3 d 5 q
+(<span class="hljs-built_in">integer</span>) 4
+
+<span class="hljs-comment"># ZUNIONSTORE &#xC5F0;&#xC0B0;</span>
+redis:6379&gt; ZUNIONSTORE myset3 2 myset1 myset2 WEIGHTS 2 3
+(<span class="hljs-built_in">integer</span>) 4
+
+<span class="hljs-comment"># ZUNIONSTORE &#xACB0;&#xACFC;</span>
+redis:6379&gt; ZRANGE myset3 0 -1 WITHSCORES
+1) <span class="hljs-string">&quot;z&quot;</span>
+2) <span class="hljs-string">&quot;3&quot;</span>
+3) <span class="hljs-string">&quot;c&quot;</span>
+4) <span class="hljs-string">&quot;6&quot;</span>
+5) <span class="hljs-string">&quot;d&quot;</span>
+6) <span class="hljs-string">&quot;9&quot;</span>
+7) <span class="hljs-string">&quot;q&quot;</span>
+8) <span class="hljs-string">&quot;15&quot;</span>
+</code></pre>
+<h2 id="20-zscan-key-cursor-match-pattern-count-count">20. ZSCAN key cursor [MATCH pattern] [COUNT count]</h2>
+<p>Redis&#xC758; ZSCAN &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xC2A4;&#xCF54;&#xC5B4;&#xC640; &#xC5F0;&#xAD00;&#xB41C; sorted set&#xC758; &#xC6D0;&#xC18C;&#xB4E4;&#xC744; &#xC21C;&#xD68C;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;.</p>
 <h3 id="return-value">Return Value</h3>
 <p>&#xBC30;&#xC5F4;&#xC774; &#xBC18;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.</p>
 <h3 id="syntax">Syntax</h3>
-<p>SSCAN &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9D1;&#xB2C8;&#xB2E4;.</p>
-<pre><code>redis:6379&gt; SSCAN &lt;KEY&gt; [MATCH pattern] [COUNT count]
+<p>ZSCAN &#xBA85;&#xB839;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xC758; &#xBB38;&#xBC95; &#xAD6C;&#xC870;&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code>redis:6379&gt; ZSCAN &lt;KEY&gt; &lt;CURSOR&gt; [MATCH pattern] [COUNT count]
 </code></pre><h3 id="example">Example</h3>
-<p>&#xD130;&#xBBF8;&#xB110;&#xC5D0; &#xB2E4;&#xC74C;&#xC744; &#xC785;&#xB825;&#xD558;&#xC138;&#xC694;.</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># myset {hello, world, hyper, sonic}</span>
-redis:6379&gt; SADD myset hello world hyper sonic
-(<span class="hljs-built_in">integer</span>) 4
-
-<span class="hljs-comment"># SSCAN &#xAE30;&#xBCF8;</span>
-redis:6379&gt; SSCAN myset 0
-1) <span class="hljs-string">&quot;0&quot;</span>
-2) 1) <span class="hljs-string">&quot;world&quot;</span>
-   2) <span class="hljs-string">&quot;hyper&quot;</span>
-   3) <span class="hljs-string">&quot;sonic&quot;</span>
-   4) <span class="hljs-string">&quot;hello&quot;</span>
-
-<span class="hljs-comment"># SSCAN &#xB9E4;&#xCE6D; &#xC870;&#xAC74;</span>
-redis:6379&gt; SSCAN myset 0 MATCH h*
-1) <span class="hljs-string">&quot;0&quot;</span>
-2) 1) <span class="hljs-string">&quot;hyper&quot;</span>
-   2) <span class="hljs-string">&quot;hello&quot;</span>
-
-<span class="hljs-comment"># SSCAN MATCH COUNT, COUNT&#xAC00; RANGE &#xB05D;&#xC774; &#xC544;&#xB2D0;&#xAE4C; &#xCD94;&#xCE21;&#xB428;.</span>
-redis:6379&gt; SSCAN myset 0 MATCH h* COUNT 1
-1) <span class="hljs-string">&quot;2&quot;</span>
-2) (empty list or <span class="hljs-built_in">set</span>)
-
-redis:6379&gt; SSCAN myset 0 MATCH h* COUNT 2
-1) <span class="hljs-string">&quot;1&quot;</span>
-2) 1) <span class="hljs-string">&quot;hyper&quot;</span>
-
-redis:6379&gt; SSCAN myset 0 MATCH h* COUNT 3
-1) <span class="hljs-string">&quot;3&quot;</span>
-2) 1) <span class="hljs-string">&quot;hyper&quot;</span>
-
-redis:6379&gt; SSCAN myset 0 MATCH h* COUNT 4
-1) <span class="hljs-string">&quot;0&quot;</span>
-2) 1) <span class="hljs-string">&quot;hyper&quot;</span>
-   2) <span class="hljs-string">&quot;hello&quot;</span>
-</code></pre>
+<p>-</p>
+<p><a href="ch13.html">HyperLogLog</a>&#xC5D0;&#xC11C; &#xACC4;&#xC18D;&#xB429;&#xB2C8;&#xB2E4;.</p>
 
                                 
                                 </section>
@@ -1168,7 +1320,7 @@ redis:6379&gt; SSCAN myset 0 MATCH h* COUNT 4
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sorted Sets","level":"1.3.7","depth":2,"next":{"title":"HyperLogLog","level":"1.3.8","depth":2,"path":"ch13.md","ref":"./ch13.md","articles":[]},"previous":{"title":"Sets","level":"1.3.6","depth":2,"path":"ch11.md","ref":"./ch11.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch12.md","mtime":"2020-02-04T02:21:31.906Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T02:23:20.330Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sorted Sets","level":"1.3.7","depth":2,"next":{"title":"HyperLogLog","level":"1.3.8","depth":2,"path":"ch13.md","ref":"./ch13.md","articles":[]},"previous":{"title":"Sets","level":"1.3.6","depth":2,"path":"ch11.md","ref":"./ch11.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ch12.md","mtime":"2020-02-06T00:28:46.387Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-06T00:30:41.432Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
